@@ -155,7 +155,7 @@
   NSFileManager* fileManager = [NSFileManager defaultManager];
   BOOL exists = [fileManager fileExistsAtPath:storePath];
 
-  TTDINFO(storePath);
+  TTDINFO(@"storePath", storePath);
   if( !exists ) {
     _modelCreated = YES;
   } else {
