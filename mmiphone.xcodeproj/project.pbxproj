@@ -13,6 +13,7 @@
 		1563EC591195889400EBDE16 /* MMStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC581195889400EBDE16 /* MMStatusModel.m */; };
 		1563ED2A1195972700EBDE16 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1563ED21119596C400EBDE16 /* libextThree20JSON+YAJL.a */; };
 		1563ED4B119597FF00EBDE16 /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563ED4A119597FF00EBDE16 /* Atlas.m */; };
+		1563EE5E1195AC3100EBDE16 /* MMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EE5D1195AC3100EBDE16 /* MMTrack.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -89,6 +90,8 @@
 		1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1563ED49119597FF00EBDE16 /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
 		1563ED4A119597FF00EBDE16 /* Atlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atlas.m; sourceTree = "<group>"; };
+		1563EE5C1195AC3100EBDE16 /* MMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTrack.h; sourceTree = "<group>"; };
+		1563EE5D1195AC3100EBDE16 /* MMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTrack.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -144,10 +147,10 @@
 		1563EC38119580DE00EBDE16 /* Status Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1563EC3C1195810C00EBDE16 /* Data Source */,
-				1563EC3B1195810500EBDE16 /* Model */,
 				1563EC3E119581F900EBDE16 /* MMStatusViewController.h */,
 				1563EC3F119581F900EBDE16 /* MMStatusViewController.m */,
+				1563EC3C1195810C00EBDE16 /* Data Source */,
+				1563EC3B1195810500EBDE16 /* Model */,
 			);
 			name = "Status Controller";
 			sourceTree = "<group>";
@@ -155,9 +158,9 @@
 		1563EC3B1195810500EBDE16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1563EC3D1195811F00EBDE16 /* Objects */,
 				1563EC571195889400EBDE16 /* MMStatusModel.h */,
 				1563EC581195889400EBDE16 /* MMStatusModel.m */,
+				1563EC3D1195811F00EBDE16 /* Objects */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,6 +179,8 @@
 			children = (
 				1563EC521195849000EBDE16 /* MMStatus.h */,
 				1563EC531195849000EBDE16 /* MMStatus.m */,
+				1563EE5C1195AC3100EBDE16 /* MMTrack.h */,
+				1563EE5D1195AC3100EBDE16 /* MMTrack.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				1563EC541195849000EBDE16 /* MMStatus.m in Sources */,
 				1563EC591195889400EBDE16 /* MMStatusModel.m in Sources */,
 				1563ED4B119597FF00EBDE16 /* Atlas.m in Sources */,
+				1563EE5E1195AC3100EBDE16 /* MMTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +416,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mmiphone_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TTMAXLOGLEVEL=TTLOGLEVEL_INFO",
+					DEBUG,
+				);
 				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
 				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (

@@ -18,6 +18,7 @@
 
 #import "MMStatusModel.h"
 #import "MMStatus.h"
+#import "MMTrack.h"
 
 // Three20 Additions
 #import <Three20Core/NSDateAdditions.h>
@@ -52,13 +53,30 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
-  TTStyledText* styledText = [TTStyledText textFromXHTML:
-                              [NSString stringWithFormat:@"%@ - %@ (%@)\n<b>%@</b>",
-                               @"Title",
-                               @"Artist",
-                               @"Album",
-                               [_statusModel.status.playtime formatShortTime]]
-                                              lineBreaks:YES URLs:NO];
+  TTStyledText* styledText = nil;
+  if ([_statusModel.tracks count] > 0) {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"mm:ss"];
+    
+    NSTimeInterval diff = [_statusModel.status.timeUntilVote timeIntervalSinceDate:[NSDate date]];
+    
+    NSDate* dateDiff = [NSDate dateWithTimeIntervalSince1970:diff];
+    
+    MMTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
+    styledText = [TTStyledText textFromXHTML:
+                          [NSString stringWithFormat:@"%@ - %@ (%@)\n<b>Next track in: %@</b>",
+                           currentTrack.title,
+                           currentTrack.artist,
+                           currentTrack.album,
+                           [dateFormatter stringFromDate:dateDiff]]
+                            lineBreaks:YES URLs:NO];
+    
+    TT_RELEASE_SAFELY(dateFormatter);
+  }
+  else {
+    styledText = [TTStyledText textFromXHTML:@"<b>No song playing</b>" lineBreaks:YES URLs:NO];
+  }
+  
   // If this asserts, it's likely that the post.text contains an HTML character that caused
   // the XML parser to fail.
   TTDASSERT(nil != styledText);

@@ -21,8 +21,28 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @interface MMStatusModel : TTURLRequestModel {
   MMStatus* _status;
+  NSArray*  _tracks;
+  
+  TTURLRequest* _statusRequest;
+  TTURLRequest* _playlistRequest;
+  
+  BOOL _statusRequestFinished;
+  BOOL _playlistRequestFinished;
 }
 
 @property (nonatomic, readonly) MMStatus* status;
+@property (nonatomic, readonly) NSArray* tracks;
+
+@property (nonatomic, retain) TTURLRequest* statusRequest;
+@property (nonatomic, retain) TTURLRequest* playlistRequest;
+
+@property (nonatomic, assign) BOOL statusRequestFinished;
+@property (nonatomic, assign) BOOL playlistRequestFinished;
+
+- (TTURLRequest*)_sendStatusRequest:(NSString*)statusUrl;
+- (void)_handleStatusResponse:(TTURLRequest*)request;
+
+- (TTURLRequest*)_sendPlaylistRequest:(NSString*)playlistUrl;
+- (void)_handlePlaylistResponse:(TTURLRequest*)request;
 
 @end
