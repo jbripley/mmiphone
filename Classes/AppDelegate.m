@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MMStatusViewController.h"
+
 #define kStoreType      NSSQLiteStoreType
 #define kStoreFilename  @"db.sqlite"
 
@@ -39,9 +41,10 @@
   TTURLMap* map = navigator.URLMap;
 
   [map from:@"*" toViewController:[TTWebController class]];
+  [map from:kAppRootURLPath toViewController:[MMStatusViewController class]];
 
   if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"http://three20.info"]];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
   }
 }
 
