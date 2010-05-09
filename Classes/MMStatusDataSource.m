@@ -18,7 +18,7 @@
 
 #import "MMStatusModel.h"
 #import "MMStatus.h"
-#import "MMTrack.h"
+#import "MMPlaylistTrack.h"
 
 // Three20 Additions
 #import <Three20Core/NSDateAdditions.h>
@@ -57,20 +57,22 @@
   TTTableSubtitleItem* playingTrackItem = nil;
   NSMutableArray* playlistTrackItems = [[NSMutableArray alloc] init];
   if ([_statusModel.tracks count] > 0) {
-    MMTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
+    MMPlaylistTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
     
     playingTrackItem = [TTTableSubtitleItem itemWithText:currentTrack.title
                         subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                  currentTrack.album, currentTrack.artist]];
+                                  currentTrack.album, currentTrack.artist]
+                        URL:currentTrack.uri];
     
-    for (MMTrack* track in _statusModel.tracks) {
+    for (MMPlaylistTrack* track in _statusModel.tracks) {
       if (track == currentTrack) {
         continue;
       }
       
       TTTableSubtitleItem* playlistTrackItem = [TTTableSubtitleItem itemWithText:track.title
                                             subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                                      track.album, track.artist]];
+                                                      track.album, track.artist]
+                                            URL:track.uri];
       [playlistTrackItems addObject:playlistTrackItem];
     }
   }

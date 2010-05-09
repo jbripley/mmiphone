@@ -9,7 +9,7 @@
 #import "MMStatusModel.h"
 
 #import "MMStatus.h"
-#import "MMTrack.h"
+#import "MMPlaylistTrack.h"
 
 #import <extThree20JSON/extThree20JSON.h>
 
@@ -155,7 +155,7 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
   NSMutableArray* tracks = [[NSMutableArray alloc] initWithCapacity:[playlist count]];
   
   for (NSDictionary* playlistTrack in playlist) {
-    MMTrack* track = [[MMTrack alloc] init];
+    MMPlaylistTrack* track = [[MMPlaylistTrack alloc] init];
     
     track.artist = [playlistTrack objectForKey:@"artist"];
     track.album = [playlistTrack objectForKey:@"album"];

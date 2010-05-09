@@ -14,23 +14,15 @@
 // limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "MMTrack.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MMTrack : NSObject {
-  NSString* _album;
-  NSString* _artist;
-  NSString* _title;
-  NSString* _uri;
-  NSNumber* _length;
+@interface MMPlaylistTrack : MMTrack {
+  NSString* _voterId;
 }
 
-@property (nonatomic, copy) NSString* album;
-@property (nonatomic, copy) NSString* artist;
-@property (nonatomic, copy) NSString* title;
-@property (nonatomic, copy) NSString* uri;
-@property (nonatomic, retain) NSNumber* length;
+@property (nonatomic, copy) NSString* voterId;
 
 @end

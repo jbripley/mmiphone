@@ -14,23 +14,18 @@
 // limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "MMPlaylistTrack.h"
+
+
+@implementation MMPlaylistTrack
+
+@synthesize voterId = _voterId;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MMTrack : NSObject {
-  NSString* _album;
-  NSString* _artist;
-  NSString* _title;
-  NSString* _uri;
-  NSNumber* _length;
+- (void) dealloc {
+  TT_RELEASE_SAFELY(_voterId);
+  
+  [super dealloc];
 }
-
-@property (nonatomic, copy) NSString* album;
-@property (nonatomic, copy) NSString* artist;
-@property (nonatomic, copy) NSString* title;
-@property (nonatomic, copy) NSString* uri;
-@property (nonatomic, retain) NSNumber* length;
 
 @end
