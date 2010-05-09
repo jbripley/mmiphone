@@ -14,7 +14,10 @@
 // limitations under the License.
 //
 
-#import "Atlas.h"
+@class MMSearchModel;
 
-NSString* kAppRootURLPath = @"tt://root";
-NSString* kAppSearchURLPath = @"mmiphone://search";
+@interface MMSearchDataSource : TTListDataSource {
+  MMSearchModel* _searchModel;
+}
+
+@end

@@ -18,6 +18,11 @@
 		1563F1171196D79800EBDE16 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563F1151196D79800EBDE16 /* Icon.png */; };
 		1563F1801196E3C000EBDE16 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1563F17F1196E3C000EBDE16 /* Settings.bundle */; };
 		1563F1B01196F54200EBDE16 /* MMPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F1AF1196F54200EBDE16 /* MMPlaylistTrack.m */; };
+		1563F1E51196FD2900EBDE16 /* MMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F1E41196FD2900EBDE16 /* MMSearchViewController.m */; };
+		1563F28A11970ACF00EBDE16 /* MMSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F28911970ACF00EBDE16 /* MMSearchDataSource.m */; };
+		1563F29011970CE000EBDE16 /* MMSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F28F11970CE000EBDE16 /* MMSearchModel.m */; };
+		1563F29A1197127600EBDE16 /* MMSearchTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F2991197127600EBDE16 /* MMSearchTrack.m */; };
+		1563F32F119720B800EBDE16 /* libextThree20XML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1563F32C119720AC00EBDE16 /* libextThree20XML.a */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -58,6 +63,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6E645BA31187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
+		};
+		1563F32B119720AC00EBDE16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2 /* libextThree20XML.a */;
+			remoteInfo = extThree20XML;
+		};
+		1563F32D119720AC00EBDE16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* extJSONUnitTests.octest */;
+			remoteInfo = UnitTests;
+		};
+		1563F330119720C600EBDE16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2 /* extThree20XML */;
+			remoteInfo = extThree20XML;
 		};
 		6EF963E8118E96CA003902E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -101,6 +127,15 @@
 		1563F17F1196E3C000EBDE16 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1563F1AE1196F54200EBDE16 /* MMPlaylistTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPlaylistTrack.h; sourceTree = "<group>"; };
 		1563F1AF1196F54200EBDE16 /* MMPlaylistTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPlaylistTrack.m; sourceTree = "<group>"; };
+		1563F1E31196FD2900EBDE16 /* MMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchViewController.h; sourceTree = "<group>"; };
+		1563F1E41196FD2900EBDE16 /* MMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchViewController.m; sourceTree = "<group>"; };
+		1563F28811970ACF00EBDE16 /* MMSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchDataSource.h; sourceTree = "<group>"; };
+		1563F28911970ACF00EBDE16 /* MMSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchDataSource.m; sourceTree = "<group>"; };
+		1563F28E11970CE000EBDE16 /* MMSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchModel.h; sourceTree = "<group>"; };
+		1563F28F11970CE000EBDE16 /* MMSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchModel.m; sourceTree = "<group>"; };
+		1563F2981197127600EBDE16 /* MMSearchTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchTrack.h; sourceTree = "<group>"; };
+		1563F2991197127600EBDE16 /* MMSearchTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchTrack.m; sourceTree = "<group>"; };
+		1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20XML.xcodeproj; path = ../three20/src/extThree20XML/extThree20XML.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -129,6 +164,7 @@
 				EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */,
 				6EF963EC118E96CC003902E7 /* libThree20.a in Frameworks */,
 				1563ED2A1195972700EBDE16 /* libextThree20JSON+YAJL.a in Frameworks */,
+				1563F32F119720B800EBDE16 /* libextThree20XML.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +185,7 @@
 		1563EC37119580CC00EBDE16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1563F1E21196FD0800EBDE16 /* Search Controller */,
 				1563EC38119580DE00EBDE16 /* Status Controller */,
 			);
 			name = Controllers;
@@ -223,6 +260,54 @@
 			name = "Shared Objects";
 			sourceTree = "<group>";
 		};
+		1563F1E21196FD0800EBDE16 /* Search Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1563F1E31196FD2900EBDE16 /* MMSearchViewController.h */,
+				1563F1E41196FD2900EBDE16 /* MMSearchViewController.m */,
+				1563F21F119701D100EBDE16 /* Data Source */,
+				1563F2201197020F00EBDE16 /* Model */,
+			);
+			name = "Search Controller";
+			sourceTree = "<group>";
+		};
+		1563F21F119701D100EBDE16 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				1563F28811970ACF00EBDE16 /* MMSearchDataSource.h */,
+				1563F28911970ACF00EBDE16 /* MMSearchDataSource.m */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		1563F2201197020F00EBDE16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1563F28E11970CE000EBDE16 /* MMSearchModel.h */,
+				1563F28F11970CE000EBDE16 /* MMSearchModel.m */,
+				1563F2211197021700EBDE16 /* Objects */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1563F2211197021700EBDE16 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				1563F2981197127600EBDE16 /* MMSearchTrack.h */,
+				1563F2991197127600EBDE16 /* MMSearchTrack.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		1563F322119720AC00EBDE16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1563F32C119720AC00EBDE16 /* libextThree20XML.a */,
+				1563F32E119720AC00EBDE16 /* extJSONUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +367,7 @@
 		6EF963BC118E96B7003902E7 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */,
 				1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */,
 				6EF963BD118E96C9003902E7 /* Three20.xcodeproj */,
 			);
@@ -313,6 +399,7 @@
 			dependencies = (
 				6EF963EE118E96CF003902E7 /* PBXTargetDependency */,
 				1563ED341195974D00EBDE16 /* PBXTargetDependency */,
+				1563F331119720C600EBDE16 /* PBXTargetDependency */,
 			);
 			name = mmiphone;
 			productName = mmiphone;
@@ -333,6 +420,10 @@
 				{
 					ProductGroup = 1563ED19119596C400EBDE16 /* Products */;
 					ProjectRef = 1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */;
+				},
+				{
+					ProductGroup = 1563F322119720AC00EBDE16 /* Products */;
+					ProjectRef = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
 				},
 				{
 					ProductGroup = 6EF963BE118E96C9003902E7 /* Products */;
@@ -366,6 +457,20 @@
 			fileType = wrapper.cfbundle;
 			path = extJSONUnitTests.octest;
 			remoteRef = 1563ED22119596C400EBDE16 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1563F32C119720AC00EBDE16 /* libextThree20XML.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libextThree20XML.a;
+			remoteRef = 1563F32B119720AC00EBDE16 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1563F32E119720AC00EBDE16 /* extJSONUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = extJSONUnitTests.octest;
+			remoteRef = 1563F32D119720AC00EBDE16 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		6EF963E9118E96CA003902E7 /* libThree20.a */ = {
@@ -413,6 +518,10 @@
 				1563ED4B119597FF00EBDE16 /* Atlas.m in Sources */,
 				1563EE5E1195AC3100EBDE16 /* MMTrack.m in Sources */,
 				1563F1B01196F54200EBDE16 /* MMPlaylistTrack.m in Sources */,
+				1563F1E51196FD2900EBDE16 /* MMSearchViewController.m in Sources */,
+				1563F28A11970ACF00EBDE16 /* MMSearchDataSource.m in Sources */,
+				1563F29011970CE000EBDE16 /* MMSearchModel.m in Sources */,
+				1563F29A1197127600EBDE16 /* MMSearchTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +532,11 @@
 			isa = PBXTargetDependency;
 			name = "extThree20JSON+YAJL";
 			targetProxy = 1563ED331195974D00EBDE16 /* PBXContainerItemProxy */;
+		};
+		1563F331119720C600EBDE16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = extThree20XML;
+			targetProxy = 1563F330119720C600EBDE16 /* PBXContainerItemProxy */;
 		};
 		6EF963EE118E96CF003902E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

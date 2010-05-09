@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 
 #import "MMStatusViewController.h"
+#import "MMSearchViewController.h"
 
 #define kStoreType      NSSQLiteStoreType
 #define kStoreFilename  @"db.sqlite"
@@ -50,6 +51,7 @@
 
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppRootURLPath toViewController:[MMStatusViewController class]];
+  [map from:kAppSearchURLPath toViewController:[MMSearchViewController class]];
 
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
@@ -75,7 +77,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+  if ([URL scheme] != @"spotify") {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+  }
   return YES;
 }
 

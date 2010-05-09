@@ -14,7 +14,9 @@
 // limitations under the License.
 //
 
-#import "Atlas.h"
+#import "MMSearchTrack.h"
 
-NSString* kAppRootURLPath = @"tt://root";
-NSString* kAppSearchURLPath = @"mmiphone://search";
+
+@implementation MMSearchTrack
+
+@end

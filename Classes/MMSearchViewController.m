@@ -14,47 +14,65 @@
 // limitations under the License.
 //
 
-#import "MMStatusViewController.h"
+#import "MMSearchViewController.h"
 
-#import "MMStatusDataSource.h"
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation MMStatusViewController
+#import "MMSearchDataSource.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id) init {
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+@implementation MMSearchViewController
+
+@synthesize delegate = _delegate;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// NSObject
+
+- (id)init {
   if (self = [super init]) {
-    self.title = @"Music Machine";
+    _delegate = nil;
+    
     self.variableHeightRows = YES;
-    self.tableViewStyle = UITableViewStyleGrouped;
+    self.title = @"Search";
   }
-  
   return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[MMStatusDataSource alloc] init] autorelease];
+  self.dataSource = [[[TTListDataSource alloc] init] autorelease];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
-}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UIViewController
 
 - (void)loadView {
   [super loadView];
   
-  self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
-                                   target:kAppSearchURLPath
-                                   action:@selector(openURLFromButton:)] autorelease];
+  TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
+  searchController.dataSource = [[[MMSearchDataSource alloc] init] autorelease];
+  self.searchViewController = searchController;
+  self.tableView.tableHeaderView = _searchController.searchBar;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  [_searchController.searchBar becomeFirstResponder];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewController
+
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+  [_delegate searchController:self didSelectObject:object];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTSearchTextFieldDelegate
+
+- (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
+  [_delegate searchController:self didSelectObject:object];
+}
 
 @end
-

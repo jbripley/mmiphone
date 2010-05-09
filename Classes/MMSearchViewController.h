@@ -17,9 +17,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MMStatusViewController : TTTableViewController {
+@protocol MMSearchControllerDelegate;
 
+@interface MMSearchViewController : TTTableViewController <TTSearchTextFieldDelegate> {
+  id<MMSearchControllerDelegate> _delegate;
 }
 
+@property(nonatomic,assign) id<MMSearchControllerDelegate> delegate;
 
 @end
+
+@protocol MMSearchControllerDelegate <NSObject>
+
+- (void)searchController:(MMSearchViewController*)controller didSelectObject:(id)object;
+
+@end
+

@@ -14,47 +14,60 @@
 // limitations under the License.
 //
 
-#import "MMStatusViewController.h"
+#import "MMSearchDataSource.h"
 
-#import "MMStatusDataSource.h"
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation MMStatusViewController
+#import "MMSearchModel.h"
+#import "MMSearchTrack.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id) init {
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+@implementation MMSearchDataSource
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)init {
   if (self = [super init]) {
-    self.title = @"Music Machine";
-    self.variableHeightRows = YES;
-    self.tableViewStyle = UITableViewStyleGrouped;
+    _searchModel = [[MMSearchModel alloc] init];
   }
   
   return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createModel {
-  self.dataSource = [[[MMStatusDataSource alloc] init] autorelease];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// UIViewController
-
-- (void)loadView {
-  [super loadView];
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_searchModel);
   
-  self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
-                                   target:kAppSearchURLPath
-                                   action:@selector(openURLFromButton:)] autorelease];
+  [super dealloc];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<TTModel>)model {
+  return _searchModel;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewDataSource
+- (void)tableViewDidLoadModel:(UITableView*)tableView {
+  self.items = [NSMutableArray array];
+  
+  for (MMSearchTrack* track in _searchModel.tracks) {      
+    TTTableSubtitleItem* searchTrackItem = [TTTableSubtitleItem itemWithText:track.title
+                                              subtitle:[NSString stringWithFormat:@"%@ - %@",
+                                                        track.album, track.artist]];
+    [self.items addObject:searchTrackItem];
+  }
+}
+
+- (void)search:(NSString*)text {
+  [_searchModel search:text];
+}
+
+- (NSString*)titleForLoading:(BOOL)reloading {
+  return @"Searching...";
+}
+
+- (NSString*)titleForNoData {
+  return @"No songs found";
+}
 
 @end
-

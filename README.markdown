@@ -16,3 +16,4 @@ This is a very early release, it only supports a manually updated status view of
 ## Screenshots
 
 ![Alt text](mmiphone/raw/master/docs/images/mmiphone-status.png "Status")
+![Alt text](mmiphone/raw/master/docs/images/mmiphone-search.png "Search")

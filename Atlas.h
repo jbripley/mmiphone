@@ -17,3 +17,4 @@
 #import <Foundation/Foundation.h>
 
 extern NSString* kAppRootURLPath;
+extern NSString* kAppSearchURLPath;
