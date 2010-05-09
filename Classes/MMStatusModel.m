@@ -113,11 +113,11 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
   
   MMStatus* status = [[MMStatus alloc] init];
   
-  status.playtime = [[NSDate date] addTimeInterval:
-                   ([[statusDict objectForKey:@"playtime"] doubleValue]/1000)];
+  status.playtime = [NSDate dateWithTimeIntervalSince1970:
+                     ([[statusDict objectForKey:@"playtime"] doubleValue]/1000.0)];
   
-  status.timeUntilVote = [[NSDate date] addTimeInterval:
-                       ([[statusDict objectForKey:@"timeUntilVote"] intValue]/1000)];
+  status.timeUntilVote = [NSDate dateWithTimeIntervalSince1970:
+                          ([[statusDict objectForKey:@"timeUntilVote"] doubleValue]/1000.0)];
   
   status.numVotes = [NSNumber numberWithInt:
                  [[statusDict objectForKey:@"numVotes"] intValue]];

@@ -83,11 +83,8 @@
   NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"mm:ss"];
   
-  NSTimeInterval diff = [_statusModel.status.timeUntilVote timeIntervalSinceDate:[NSDate date]];
-  NSDate* dateDiff = [NSDate dateWithTimeIntervalSince1970:diff];
-  
   NSString *nextTrackInText = [NSString stringWithFormat:@"Next track in: %@",
-                               [dateFormatter stringFromDate:dateDiff]];
+                               [dateFormatter stringFromDate:_statusModel.status.timeUntilVote]];
   TT_RELEASE_SAFELY(dateFormatter);
   
   TTTableGrayTextItem* nextTrackInItem = [TTTableGrayTextItem itemWithText:nextTrackInText];
