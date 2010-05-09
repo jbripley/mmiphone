@@ -14,6 +14,8 @@
 		1563ED2A1195972700EBDE16 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1563ED21119596C400EBDE16 /* libextThree20JSON+YAJL.a */; };
 		1563ED4B119597FF00EBDE16 /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563ED4A119597FF00EBDE16 /* Atlas.m */; };
 		1563EE5E1195AC3100EBDE16 /* MMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EE5D1195AC3100EBDE16 /* MMTrack.m */; };
+		1563F1161196D79800EBDE16 /* default_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563F1141196D79800EBDE16 /* default_cover.png */; };
+		1563F1171196D79800EBDE16 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563F1151196D79800EBDE16 /* Icon.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -31,28 +33,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2 /* libextThree20JSON+SBJSON.a */;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
 			remoteInfo = "extThree20JSON+SBJSON";
 		};
 		1563ED20119596C400EBDE16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 6E645BD91187751200F08CB1 /* libextThree20JSON+YAJL.a */;
+			remoteGlobalIDString = 6E645BD91187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
 		};
 		1563ED22119596C400EBDE16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* extJSONUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = UnitTestsSBJSON;
 		};
 		1563ED331195974D00EBDE16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563ED18119596C400EBDE16 /* extThree20JSON.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 6E645BA31187751200F08CB1 /* extThree20JSON+YAJL */;
+			remoteGlobalIDString = 6E645BA31187751200F08CB1;
 			remoteInfo = "extThree20JSON+YAJL";
 		};
 		6EF963E8118E96CA003902E7 /* PBXContainerItemProxy */ = {
@@ -92,6 +94,8 @@
 		1563ED4A119597FF00EBDE16 /* Atlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atlas.m; sourceTree = "<group>"; };
 		1563EE5C1195AC3100EBDE16 /* MMTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTrack.h; sourceTree = "<group>"; };
 		1563EE5D1195AC3100EBDE16 /* MMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTrack.m; sourceTree = "<group>"; };
+		1563F1141196D79800EBDE16 /* default_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_cover.png; sourceTree = "<group>"; };
+		1563F1151196D79800EBDE16 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -238,6 +242,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1563F1141196D79800EBDE16 /* default_cover.png */,
+				1563F1151196D79800EBDE16 /* Icon.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* mmiphone.xcdatamodel */,
 				8D1107310486CEB800E47090 /* mmiphone-Info.plist */,
@@ -368,6 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
+				1563F1161196D79800EBDE16 /* default_cover.png in Resources */,
+				1563F1171196D79800EBDE16 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
