@@ -41,7 +41,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
 - (void)search:(NSString*)text {
   [self cancel];
   
-  if (!text.length) {
+  if (!TTIsStringWithAnyText(text)) {
     _isLoading = NO;
     TT_RELEASE_SAFELY(_tracks);
     [_delegates perform:@selector(modelDidChange:) withObject:self];
@@ -52,8 +52,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   _isLoading = YES;
   
   NSString* url = [NSString stringWithFormat:kSpotifyTrackSearchFormat, text];
-  TTURLRequest* request = [TTURLRequest requestWithURL: url
-                           delegate: self];
+  TTURLRequest* request = [TTURLRequest requestWithURL:url delegate:self];
   
   TTURLXMLResponse* response = [[TTURLXMLResponse alloc] init];
   response.isRssFeed = YES;
@@ -106,6 +105,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   
   _isLoading = NO;
   [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+  [super requestDidFinishLoad:request];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
