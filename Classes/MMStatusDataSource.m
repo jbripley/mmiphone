@@ -60,7 +60,8 @@
     MMTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
     
     playingTrackItem = [TTTableSubtitleItem itemWithText:currentTrack.title
-                        subtitle:[NSString stringWithFormat:@"%@ - %@", currentTrack.album, currentTrack.artist]];
+                        subtitle:[NSString stringWithFormat:@"%@ - %@",
+                                  currentTrack.album, currentTrack.artist]];
     
     for (MMTrack* track in _statusModel.tracks) {
       if (track == currentTrack) {
@@ -68,7 +69,8 @@
       }
       
       TTTableSubtitleItem* playlistTrackItem = [TTTableSubtitleItem itemWithText:track.title
-                                            subtitle:[NSString stringWithFormat:@"%@ - %@", track.album, track.artist]];
+                                            subtitle:[NSString stringWithFormat:@"%@ - %@",
+                                                      track.album, track.artist]];
       [playlistTrackItems addObject:playlistTrackItem];
     }
   }
