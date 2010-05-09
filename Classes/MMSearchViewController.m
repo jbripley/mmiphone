@@ -32,8 +32,7 @@
   if (self = [super init]) {
     _delegate = nil;
     
-    self.variableHeightRows = YES;
-    self.title = @"Search";
+    self.title = @"Find a Song";
   }
   return self;
 }
@@ -53,12 +52,22 @@
   searchController.dataSource = [[[MMSearchDataSource alloc] init] autorelease];
   self.searchViewController = searchController;
   self.tableView.tableHeaderView = _searchController.searchBar;
+  
+  _searchController.searchBar.placeholder = @"Song or Artist";
+  _searchController.searchBar.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  [_searchController.searchBar becomeFirstResponder];
+  [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
+    withObject:nil afterDelay:0.5];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// UISearchBarDelegate
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+  [[self navigationController] popViewControllerAnimated:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

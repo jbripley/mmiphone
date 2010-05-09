@@ -19,7 +19,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @protocol MMSearchControllerDelegate;
 
-@interface MMSearchViewController : TTTableViewController <TTSearchTextFieldDelegate> {
+@interface MMSearchViewController : TTTableViewController <
+  TTSearchTextFieldDelegate,
+  UISearchBarDelegate
+  > {
   id<MMSearchControllerDelegate> _delegate;
 }
 
