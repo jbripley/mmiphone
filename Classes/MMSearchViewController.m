@@ -57,11 +57,11 @@
   _searchController.searchBar.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
   
   [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
-    withObject:nil afterDelay:0.5];
+    withObject:nil afterDelay:0.1];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
