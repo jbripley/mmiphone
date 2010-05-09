@@ -52,38 +52,58 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
+  NSMutableArray* sections = [[NSMutableArray alloc] init];
   
-  TTStyledText* styledText = nil;
+  TTTableSubtitleItem* playingTrackItem = nil;
+  NSMutableArray* playlistTrackItems = [[NSMutableArray alloc] init];
   if ([_statusModel.tracks count] > 0) {
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"mm:ss"];
-    
-    NSTimeInterval diff = [_statusModel.status.timeUntilVote timeIntervalSinceDate:[NSDate date]];
-    
-    NSDate* dateDiff = [NSDate dateWithTimeIntervalSince1970:diff];
-    
     MMTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
-    styledText = [TTStyledText textFromXHTML:
-                          [NSString stringWithFormat:@"%@ - %@ (%@)\n<b>Next track in: %@</b>",
-                           currentTrack.title,
-                           currentTrack.artist,
-                           currentTrack.album,
-                           [dateFormatter stringFromDate:dateDiff]]
-                            lineBreaks:YES URLs:NO];
     
-    TT_RELEASE_SAFELY(dateFormatter);
+    playingTrackItem = [TTTableSubtitleItem itemWithText:currentTrack.title
+                        subtitle:[NSString stringWithFormat:@"%@ - %@", currentTrack.album, currentTrack.artist]];
+    
+    for (MMTrack* track in _statusModel.tracks) {
+      if (track == currentTrack) {
+        continue;
+      }
+      
+      TTTableSubtitleItem* playlistTrackItem = [TTTableSubtitleItem itemWithText:track.title
+                                            subtitle:[NSString stringWithFormat:@"%@ - %@", track.album, track.artist]];
+      [playlistTrackItems addObject:playlistTrackItem];
+    }
   }
   else {
-    styledText = [TTStyledText textFromXHTML:@"<b>No song playing</b>" lineBreaks:YES URLs:NO];
+    playingTrackItem = [TTTableSubtitleItem itemWithText:@"No song playing" subtitle:@""];
   }
   
-  // If this asserts, it's likely that the post.text contains an HTML character that caused
-  // the XML parser to fail.
-  TTDASSERT(nil != styledText);
-  [items addObject:[TTTableStyledTextItem itemWithText:styledText]];
+  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"mm:ss"];
+  
+  NSTimeInterval diff = [_statusModel.status.timeUntilVote timeIntervalSinceDate:[NSDate date]];
+  NSDate* dateDiff = [NSDate dateWithTimeIntervalSince1970:diff];
+  
+  NSString *nextTrackInText = [NSString stringWithFormat:@"Next track in: %@",
+                               [dateFormatter stringFromDate:dateDiff]];
+  TT_RELEASE_SAFELY(dateFormatter);
+  
+  TTTableGrayTextItem* nextTrackInItem = [TTTableGrayTextItem itemWithText:nextTrackInText];
+  
+  NSMutableArray* currentTrackItems = [[NSMutableArray alloc] init];
+  [currentTrackItems addObject:playingTrackItem];
+  [currentTrackItems addObject:nextTrackInItem];
+  
+  [sections addObject:@""];
+  [items addObject:currentTrackItems];
+  TT_RELEASE_SAFELY(currentTrackItems);
+  
+  [sections addObject:@"Upcoming Playlist"];
+  [items addObject:playlistTrackItems];
+  TT_RELEASE_SAFELY(playlistTrackItems);
   
   self.items = items;
+  self.sections = sections;
   TT_RELEASE_SAFELY(items);
+  TT_RELEASE_SAFELY(sections);
 }
 
 @end

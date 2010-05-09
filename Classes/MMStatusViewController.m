@@ -28,6 +28,7 @@
   if (self = [super init]) {
     self.title = @"Music Machine";
     self.variableHeightRows = YES;
+    self.tableViewStyle = UITableViewStyleGrouped;
   }
   
   return self;

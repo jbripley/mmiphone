@@ -16,7 +16,7 @@
 
 @class MMStatusModel;
 
-@interface MMStatusDataSource : TTListDataSource {
+@interface MMStatusDataSource : TTSectionedDataSource {
   MMStatusModel* _statusModel;
 }
 
