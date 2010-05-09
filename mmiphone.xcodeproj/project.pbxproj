@@ -16,6 +16,7 @@
 		1563EE5E1195AC3100EBDE16 /* MMTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EE5D1195AC3100EBDE16 /* MMTrack.m */; };
 		1563F1161196D79800EBDE16 /* default_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563F1141196D79800EBDE16 /* default_cover.png */; };
 		1563F1171196D79800EBDE16 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563F1151196D79800EBDE16 /* Icon.png */; };
+		1563F1801196E3C000EBDE16 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1563F17F1196E3C000EBDE16 /* Settings.bundle */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -96,6 +97,7 @@
 		1563EE5D1195AC3100EBDE16 /* MMTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTrack.m; sourceTree = "<group>"; };
 		1563F1141196D79800EBDE16 /* default_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_cover.png; sourceTree = "<group>"; };
 		1563F1151196D79800EBDE16 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1563F17F1196E3C000EBDE16 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -242,6 +244,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1563F17F1196E3C000EBDE16 /* Settings.bundle */,
 				1563F1141196D79800EBDE16 /* default_cover.png */,
 				1563F1151196D79800EBDE16 /* Icon.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
@@ -376,6 +379,7 @@
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
 				1563F1161196D79800EBDE16 /* default_cover.png in Resources */,
 				1563F1171196D79800EBDE16 /* Icon.png in Resources */,
+				1563F1801196E3C000EBDE16 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

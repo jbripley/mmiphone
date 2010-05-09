@@ -13,8 +13,8 @@
 
 #import <extThree20JSON/extThree20JSON.h>
 
-static NSString* kMMStatusFormat = @"http://%@/status";
-static NSString* kMMPlaylistFormat = @"http://%@/playlist";
+static NSString* kMMStatusFormat = @"%@/status";
+static NSString* kMMPlaylistFormat = @"%@/playlist";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,13 +43,14 @@ static NSString* kMMPlaylistFormat = @"http://%@/playlist";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
-    NSString* server = @"localhost:8080";
+    NSString* serverURL = [[NSUserDefaults standardUserDefaults]
+                              stringForKey:@"serverURL_preference"];
     
-    NSString* statusUrl = [NSString stringWithFormat:kMMStatusFormat, server];
+    NSString* statusUrl = [NSString stringWithFormat:kMMStatusFormat, serverURL];
     self.statusRequest = [self _sendStatusRequest:statusUrl];
     self.statusRequestFinished = NO;
     
-    NSString* playlistUrl = [NSString stringWithFormat:kMMPlaylistFormat, server];
+    NSString* playlistUrl = [NSString stringWithFormat:kMMPlaylistFormat, serverURL];
     self.playlistRequest = [self _sendPlaylistRequest:playlistUrl];
     self.playlistRequestFinished = NO;
   }
