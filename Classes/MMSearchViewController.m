@@ -53,6 +53,7 @@
   self.searchViewController = searchController;
   self.tableView.tableHeaderView = _searchController.searchBar;
   
+  _searchController.pausesBeforeSearching = YES;
   _searchController.searchBar.placeholder = @"Song or Artist";
   _searchController.searchBar.delegate = self;
 }
@@ -61,7 +62,7 @@
   [super viewDidAppear:animated];
   
   [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
-    withObject:nil afterDelay:0.1];
+    withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

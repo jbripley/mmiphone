@@ -25,15 +25,17 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   if (self = [super init]) {
     _delegates = nil;
     _tracks = nil;
-    _isLoading = NO;
   }
   return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
+  [_request cancel];
+  
   TT_RELEASE_SAFELY(_delegates);
   TT_RELEASE_SAFELY(_tracks);
+  TT_RELEASE_SAFELY(_request);
   
   [super dealloc];
 }
@@ -42,14 +44,12 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   [self cancel];
   
   if (!TTIsStringWithAnyText(text)) {
-    _isLoading = NO;
     TT_RELEASE_SAFELY(_tracks);
     [_delegates perform:@selector(modelDidChange:) withObject:self];
     return;
   }
   
   [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
-  _isLoading = YES;
   
   NSString* url = [NSString stringWithFormat:kSpotifyTrackSearchFormat, text];
   TTURLRequest* request = [TTURLRequest requestWithURL:url delegate:self];
@@ -63,7 +63,15 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidStartLoad:(TTURLRequest*)request {
+  [_request release];
+  _request = [request retain];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+  [super requestDidFinishLoad:request];
+  
   TTURLXMLResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
@@ -101,11 +109,8 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   }
   _tracks = tracks;
   
-  //  [_delegates perform:@selector(model:didFailLoadWithError:) withObject:self withObject:error];
-  
-  _isLoading = NO;
+  TT_RELEASE_SAFELY(_request);
   [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
-  [super requestDidFinishLoad:request];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,21 +123,13 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   return _delegates;
 }
 
-- (BOOL)isLoadingMore {
-  return NO;
-}
-
-- (BOOL)isOutdated {
-  return NO;
-}
-
 - (BOOL)isLoaded {
   BOOL isLoaded = !(_tracks == nil);
   return isLoaded;
 }
 
 - (BOOL)isLoading {
-  return _isLoading;
+  return !!_request;
 }
 
 - (BOOL)isEmpty {
@@ -143,10 +140,8 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
 }
 
-- (void)invalidate:(BOOL)erase {
-}
-
 - (void)cancel {
+  [_request cancel];
   [_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
 }
 

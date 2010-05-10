@@ -19,8 +19,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @interface MMSearchModel : TTURLRequestModel {
   NSArray*  _tracks;
-  
-  BOOL _isLoading;
+
+  TTURLRequest* _request;
 }
 
 @property (nonatomic, readonly) NSArray* tracks;
