@@ -58,8 +58,7 @@
     
     playingTrackItem = [TTTableSubtitleItem itemWithText:currentTrack.title
                         subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                  currentTrack.album, currentTrack.artist]
-                        URL:currentTrack.uri];
+                                  currentTrack.album, currentTrack.artist]];
     
     for (MMPlaylistTrack* track in _statusModel.tracks) {
       if (track == currentTrack) {

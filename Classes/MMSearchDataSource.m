@@ -53,7 +53,8 @@
   for (MMSearchTrack* track in _searchModel.tracks) {      
     TTTableSubtitleItem* searchTrackItem = [TTTableSubtitleItem itemWithText:track.title
                                               subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                                        track.album, track.artist]];
+                                                        track.album, track.artist]
+                                              URL:track.uri];
     [self.items addObject:searchTrackItem];
   }
 }

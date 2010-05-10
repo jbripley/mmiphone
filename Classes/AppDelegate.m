@@ -76,7 +76,7 @@
     return YES;
   }
   else {
-    return NO;
+    return [[UIApplication sharedApplication] canOpenURL:URL];
   }
 }
 
