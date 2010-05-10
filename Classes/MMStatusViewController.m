@@ -26,7 +26,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if (self = [super init]) {
-    self.title = @"Music Machine";
+    self.title = @"Currently Playing";
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
   }
@@ -54,7 +54,6 @@
                                    target:kAppSearchURLPath
                                    action:@selector(openURLFromButton:)] autorelease];
 }
-
 
 @end
 

@@ -48,6 +48,10 @@
 - (void)loadView {
   [super loadView];
   
+  self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                           target:self action:@selector(_dismissView)] autorelease];
+  
   TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
   searchController.dataSource = [[[MMSearchDataSource alloc] init] autorelease];
   self.searchViewController = searchController;
@@ -68,7 +72,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UISearchBarDelegate
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-  [[self navigationController] popViewControllerAnimated:YES];
+  [self _dismissView];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,6 +87,10 @@
 
 - (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
   [_delegate searchController:self didSelectObject:object];
+}
+
+- (void)_dismissView {
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

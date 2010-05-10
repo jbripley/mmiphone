@@ -52,7 +52,7 @@
 
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppRootURLPath toViewController:[MMStatusViewController class]];
-  [map from:kAppSearchURLPath toViewController:[MMSearchViewController class]];
+  [map from:kAppSearchURLPath toModalViewController:[MMSearchViewController class]];
 
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];

@@ -28,6 +28,8 @@
 
 @property(nonatomic,assign) id<MMSearchControllerDelegate> delegate;
 
+- (void)_dismissView;
+
 @end
 
 @protocol MMSearchControllerDelegate <NSObject>
