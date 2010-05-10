@@ -133,8 +133,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
 }
 
 - (BOOL)isEmpty {
-  BOOL isEmpty = !_tracks.count;
-  return isEmpty;
+  return !_tracks.count;
 }
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {

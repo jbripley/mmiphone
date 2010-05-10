@@ -46,6 +46,7 @@
 
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+  navigator.delegate = self;
 
   TTURLMap* map = navigator.URLMap;
 
@@ -71,15 +72,18 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
-  return YES;
+  if (![[URL scheme] isEqualToString:@"spotify"]) {
+    return YES;
+  }
+  else {
+    return NO;
+  }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-  if ([URL scheme] != @"spotify") {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
-  }
+  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
   return YES;
 }
 
