@@ -17,3 +17,4 @@ This is a very early release, it only supports a manually updated status view of
 
 ![Alt text](mmiphone/raw/master/docs/images/mmiphone-status.png "Status")
 ![Alt text](mmiphone/raw/master/docs/images/mmiphone-search.png "Search")
+![Alt text](mmiphone/raw/master/docs/images/mmiphone-vote.png "Vote")
