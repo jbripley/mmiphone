@@ -18,6 +18,7 @@
 
 #import "MMStatusViewController.h"
 #import "MMSearchViewController.h"
+#import "MMVoteViewController.h"
 
 #define kStoreType      NSSQLiteStoreType
 #define kStoreFilename  @"db.sqlite"
@@ -52,7 +53,8 @@
 
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppRootURLPath toViewController:[MMStatusViewController class]];
-  [map from:kAppSearchURLPath toModalViewController:[MMSearchViewController class]];
+  [map from:kAppSearchURLPath toModalViewController:[MMSearchViewController class] ];
+  [map from:kAppVoteURLPath toViewController:[MMVoteViewController class]];
 
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];

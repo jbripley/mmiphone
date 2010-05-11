@@ -14,8 +14,12 @@
 // limitations under the License.
 //
 
-#import "Atlas.h"
+@class MMVoteModel;
 
-NSString* kAppRootURLPath = @"tt://root";
-NSString* kAppSearchURLPath = @"mmiphone://search";
-NSString* kAppVoteURLPath = @"mmiphone://vote/(initWithTrackUri:)";
+@interface MMVoteDataSource : TTSectionedDataSource {
+  MMVoteModel* _voteModel;  
+}
+
+- (id)initWithTrackUri:(NSString*)trackUri;
+
+@end

@@ -14,8 +14,19 @@
 // limitations under the License.
 //
 
-#import "Atlas.h"
+@class MMTrack;
 
-NSString* kAppRootURLPath = @"tt://root";
-NSString* kAppSearchURLPath = @"mmiphone://search";
-NSString* kAppVoteURLPath = @"mmiphone://vote/(initWithTrackUri:)";
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+@interface MMVoteModel : TTURLRequestModel {
+  MMTrack* _track;
+  NSString* _trackUri;
+}
+
+@property (nonatomic, readonly) MMTrack* track;
+@property (nonatomic, copy) NSString* trackUri;
+
+- (id)initWithTrackUri:(NSString*)trackUri;
+
+@end
