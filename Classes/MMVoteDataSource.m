@@ -50,16 +50,27 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
   NSMutableArray* sections = [[NSMutableArray alloc] init];
   
-  TTTableSubtitleItem* voteTrackItem = [TTTableSubtitleItem itemWithText:_voteModel.track.title
-                                        subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                                  _voteModel.track.album,
-                                                  _voteModel.track.artist]
-                                        URL:_voteModel.track.uri];
-  
   NSMutableArray* voteTrackItems = [[NSMutableArray alloc] init];
-  [voteTrackItems addObject:voteTrackItem];
   
-  [sections addObject:@""];
+  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.title
+                              imageURL:@"bundle://icon_track.png" URL:nil]];
+  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.artist
+                              imageURL:@"bundle://icon_artist.png" URL:nil]];
+  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.album
+                              imageURL:@"bundle://icon_disc.png" URL:nil]];
+  
+  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"mm:ss"];
+  
+  [voteTrackItems addObject:[TTTableImageItem itemWithText:
+                             [dateFormatter stringFromDate:
+                              [NSDate dateWithTimeIntervalSince1970:
+                               [_voteModel.track.length doubleValue]]]
+                            imageURL:@"bundle://icon_time.png" URL:nil]];
+  
+  TT_RELEASE_SAFELY(dateFormatter);
+  
+  [sections addObject:@"Chosen Track"];
   [items addObject:voteTrackItems];
   TT_RELEASE_SAFELY(voteTrackItems);
     

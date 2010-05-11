@@ -19,3 +19,5 @@
 NSString* kAppRootURLPath = @"tt://root";
 NSString* kAppSearchURLPath = @"mmiphone://search";
 NSString* kAppVoteURLPath = @"mmiphone://vote/(initWithTrackUri:)";
+NSString* kAppConfirmVoteURLPath = @"mmiphone://vote/confirm/(confirm:)";
+NSString* kAppSendVoteURLPath = @"mmiphone://vote/send/(send:)";

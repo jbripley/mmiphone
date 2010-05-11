@@ -17,7 +17,7 @@
 @class MMVoteModel;
 
 @interface MMVoteDataSource : TTSectionedDataSource {
-  MMVoteModel* _voteModel;  
+  MMVoteModel* _voteModel;
 }
 
 - (id)initWithTrackUri:(NSString*)trackUri;

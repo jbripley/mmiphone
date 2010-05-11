@@ -19,3 +19,5 @@
 extern NSString* kAppRootURLPath;
 extern NSString* kAppSearchURLPath;
 extern NSString* kAppVoteURLPath;
+extern NSString* kAppConfirmVoteURLPath;
+extern NSString* kAppSendVoteURLPath;

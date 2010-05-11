@@ -15,7 +15,10 @@
 //
 
 #import "MMVoteViewController.h"
+
 #import "MMVoteDataSource.h"
+
+#import "MMVoteModel.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,12 +30,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) initWithTrackUri:(NSString*)trackUri query:(NSDictionary*)query {
   if (self = [super init]) {
-    self.title = @"Vote for Song";
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
-    
-    TTDINFO("Vote Track URI: %@", trackUri);
-    TTDINFO("Vote query: %@", query);
     
     self.dataSource = [[[MMVoteDataSource alloc] initWithTrackUri:trackUri] autorelease];
   }
@@ -41,9 +40,31 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//- (void)createModel {
-//  
-//}
+// UIViewController
+
+- (void)loadView {
+  [super loadView];
+  
+  self.navigationItem.rightBarButtonItem =
+  [[[UIBarButtonItem alloc] initWithTitle:@"Send Vote" style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(confirm)] autorelease];
+}
+
+- (void)confirm {
+  TTAlertViewController* alert = [[[TTAlertViewController alloc]
+                                   initWithTitle:@"Send Vote"
+                                   message:@"Sure you want to send your vote?"] autorelease];
+  [alert addButtonWithTitle:@"Yes" URL:
+   [NSString stringWithFormat:@"mmiphone://vote/send/%@",
+    [(MMVoteModel*)self.dataSource.model trackUri]]];
+  [alert addCancelButtonWithTitle:@"No" URL:nil];
+  [alert showInView:[self view] animated:YES];
+}
+
+- (void)send:(NSString*)trackUri {
+  TTDINFO(@"Send vote for: %@", trackUri);
+  [self dismissModalViewControllerAnimated:NO];
+}
 
 @end
-
