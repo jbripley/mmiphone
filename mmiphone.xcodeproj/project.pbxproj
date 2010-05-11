@@ -21,8 +21,11 @@
 		1563F1E51196FD2900EBDE16 /* MMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F1E41196FD2900EBDE16 /* MMSearchViewController.m */; };
 		1563F28A11970ACF00EBDE16 /* MMSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F28911970ACF00EBDE16 /* MMSearchDataSource.m */; };
 		1563F29011970CE000EBDE16 /* MMSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F28F11970CE000EBDE16 /* MMSearchModel.m */; };
-		1563F29A1197127600EBDE16 /* MMSearchTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F2991197127600EBDE16 /* MMSearchTrack.m */; };
 		1563F32F119720B800EBDE16 /* libextThree20XML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1563F32C119720AC00EBDE16 /* libextThree20XML.a */; };
+		1563F5E41198725E00EBDE16 /* MMVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F5E31198725E00EBDE16 /* MMVoteViewController.m */; };
+		1563F63A119896BB00EBDE16 /* MMXmlTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F639119896BB00EBDE16 /* MMXmlTrackParser.m */; };
+		1563F6581198988B00EBDE16 /* MMVoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F6571198988B00EBDE16 /* MMVoteModel.m */; };
+		1563F65D1198995D00EBDE16 /* MMVoteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563F65C1198995D00EBDE16 /* MMVoteDataSource.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -133,9 +136,15 @@
 		1563F28911970ACF00EBDE16 /* MMSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchDataSource.m; sourceTree = "<group>"; };
 		1563F28E11970CE000EBDE16 /* MMSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchModel.h; sourceTree = "<group>"; };
 		1563F28F11970CE000EBDE16 /* MMSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchModel.m; sourceTree = "<group>"; };
-		1563F2981197127600EBDE16 /* MMSearchTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchTrack.h; sourceTree = "<group>"; };
-		1563F2991197127600EBDE16 /* MMSearchTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchTrack.m; sourceTree = "<group>"; };
 		1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20XML.xcodeproj; path = ../three20/src/extThree20XML/extThree20XML.xcodeproj; sourceTree = SOURCE_ROOT; };
+		1563F5E21198725E00EBDE16 /* MMVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMVoteViewController.h; sourceTree = "<group>"; };
+		1563F5E31198725E00EBDE16 /* MMVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMVoteViewController.m; sourceTree = "<group>"; };
+		1563F638119896BB00EBDE16 /* MMXmlTrackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMXmlTrackParser.h; sourceTree = "<group>"; };
+		1563F639119896BB00EBDE16 /* MMXmlTrackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMXmlTrackParser.m; sourceTree = "<group>"; };
+		1563F6561198988B00EBDE16 /* MMVoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMVoteModel.h; sourceTree = "<group>"; };
+		1563F6571198988B00EBDE16 /* MMVoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMVoteModel.m; sourceTree = "<group>"; };
+		1563F65B1198995D00EBDE16 /* MMVoteDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMVoteDataSource.h; sourceTree = "<group>"; };
+		1563F65C1198995D00EBDE16 /* MMVoteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMVoteDataSource.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -174,6 +183,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1563F6371198968B00EBDE16 /* XML Parser */,
 				1563F1AD1196F51D00EBDE16 /* Shared Objects */,
 				1563EC37119580CC00EBDE16 /* Controllers */,
 				EB383C0410BBF8A40000B2D2 /* AppDelegate.h */,
@@ -185,6 +195,7 @@
 		1563EC37119580CC00EBDE16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1563F5E11198724600EBDE16 /* Vote Controller */,
 				1563F1E21196FD0800EBDE16 /* Search Controller */,
 				1563EC38119580DE00EBDE16 /* Status Controller */,
 			);
@@ -285,18 +296,8 @@
 			children = (
 				1563F28E11970CE000EBDE16 /* MMSearchModel.h */,
 				1563F28F11970CE000EBDE16 /* MMSearchModel.m */,
-				1563F2211197021700EBDE16 /* Objects */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		1563F2211197021700EBDE16 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				1563F2981197127600EBDE16 /* MMSearchTrack.h */,
-				1563F2991197127600EBDE16 /* MMSearchTrack.m */,
-			);
-			name = Objects;
 			sourceTree = "<group>";
 		};
 		1563F322119720AC00EBDE16 /* Products */ = {
@@ -306,6 +307,44 @@
 				1563F32E119720AC00EBDE16 /* extJSONUnitTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1563F5E11198724600EBDE16 /* Vote Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1563F5E21198725E00EBDE16 /* MMVoteViewController.h */,
+				1563F5E31198725E00EBDE16 /* MMVoteViewController.m */,
+				1563F6541198985400EBDE16 /* Data Source */,
+				1563F6551198985D00EBDE16 /* Model */,
+			);
+			name = "Vote Controller";
+			sourceTree = "<group>";
+		};
+		1563F6371198968B00EBDE16 /* XML Parser */ = {
+			isa = PBXGroup;
+			children = (
+				1563F638119896BB00EBDE16 /* MMXmlTrackParser.h */,
+				1563F639119896BB00EBDE16 /* MMXmlTrackParser.m */,
+			);
+			name = "XML Parser";
+			sourceTree = "<group>";
+		};
+		1563F6541198985400EBDE16 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				1563F65B1198995D00EBDE16 /* MMVoteDataSource.h */,
+				1563F65C1198995D00EBDE16 /* MMVoteDataSource.m */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		1563F6551198985D00EBDE16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1563F6561198988B00EBDE16 /* MMVoteModel.h */,
+				1563F6571198988B00EBDE16 /* MMVoteModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -521,7 +560,10 @@
 				1563F1E51196FD2900EBDE16 /* MMSearchViewController.m in Sources */,
 				1563F28A11970ACF00EBDE16 /* MMSearchDataSource.m in Sources */,
 				1563F29011970CE000EBDE16 /* MMSearchModel.m in Sources */,
-				1563F29A1197127600EBDE16 /* MMSearchTrack.m in Sources */,
+				1563F5E41198725E00EBDE16 /* MMVoteViewController.m in Sources */,
+				1563F63A119896BB00EBDE16 /* MMXmlTrackParser.m in Sources */,
+				1563F6581198988B00EBDE16 /* MMVoteModel.m in Sources */,
+				1563F65D1198995D00EBDE16 /* MMVoteDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

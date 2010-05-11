@@ -17,7 +17,7 @@
 #import "MMSearchDataSource.h"
 
 #import "MMSearchModel.h"
-#import "MMSearchTrack.h"
+#import "MMTrack.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,11 +50,12 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   self.items = [NSMutableArray array];
   
-  for (MMSearchTrack* track in _searchModel.tracks) {      
+  for (MMTrack* track in _searchModel.tracks) {
     TTTableSubtitleItem* searchTrackItem = [TTTableSubtitleItem itemWithText:track.title
                                               subtitle:[NSString stringWithFormat:@"%@ - %@",
                                                         track.album, track.artist]
-                                              URL:track.uri];
+                                              URL:[NSString stringWithFormat:
+                                                   @"mmiphone://vote/%@", track.uri]];
     [self.items addObject:searchTrackItem];
   }
 }

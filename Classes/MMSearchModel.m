@@ -8,7 +8,9 @@
 
 #import "MMSearchModel.h"
 
-#import "MMSearchTrack.h"
+#import "MMTrack.h"
+
+#import "MMXmlTrackParser.h"
 
 #import <extThree20XML/extThree20XML.h>
 
@@ -81,31 +83,11 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   NSMutableArray* tracks = [[NSMutableArray alloc] init];
   
   for(NSDictionary* trackDict in [tracksDict objectForKey:@"track"]) {
-    if (![trackDict isKindOfClass:[NSDictionary class]]) {
-      continue;
+    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict];
+    
+    if (track != nil) {
+      [tracks addObject:track];
     }
-    
-    NSDictionary* artistDict = [trackDict objectForKey:@"artist"];
-    if (![artistDict isKindOfClass:[NSDictionary class]]) {
-      continue;
-    }
-    
-    NSDictionary* albumDict = [trackDict objectForKey:@"album"];
-    if (![albumDict isKindOfClass:[NSDictionary class]]) {
-      continue;
-    }
-    
-    MMSearchTrack* track = [[MMSearchTrack alloc] init];
-    track.artist = [[artistDict objectForKey:@"name"] objectForKey:@"___Entity_Value___"];
-    track.album = [[albumDict objectForKey:@"name"] objectForKey:@"___Entity_Value___"];
-    track.title = [[trackDict objectForKey:@"name"] objectForKey:@"___Entity_Value___"];
-    track.uri = [trackDict objectForKey:@"href"];
-    track.length = [NSNumber numberWithDouble:
-                    [[[trackDict objectForKey:@"length"]
-                      objectForKey:@"___Entity_Value___"] doubleValue]];
-    
-    [tracks addObject:track];
-    TT_RELEASE_SAFELY(track);
   }
   _tracks = tracks;
   

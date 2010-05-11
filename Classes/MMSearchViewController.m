@@ -18,23 +18,31 @@
 
 #import "MMSearchDataSource.h"
 
+#import <Three20UICommon/UIViewControllerAdditions.h>
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation MMSearchViewController
 
-@synthesize delegate = _delegate;
+@synthesize savedSearch = _savedSearch;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
 
 - (id)init {
   if (self = [super init]) {
-    _delegate = nil;
-    
+    _savedSearch = nil;
     self.title = @"Find a Song";
   }
   return self;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_savedSearch);
+  
+  [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +58,7 @@
   
   self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
                                            initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                           target:self action:@selector(_dismissView)] autorelease];
+                                           target:self action:@selector(dismiss)] autorelease];
   
   TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
   searchController.dataSource = [[[MMSearchDataSource alloc] init] autorelease];
@@ -65,31 +73,47 @@
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   
-  [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
-    withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
+  if (_savedSearch != nil) {
+    _searchController.searchBar.text = _savedSearch;
+  }
+  else {
+    [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
+                                      withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
+  }
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)persistView:(NSMutableDictionary*)state {
+  NSString* savedSearch = self.savedSearch;
+  if (TTIsStringWithAnyText(savedSearch)) {
+    [state setObject:savedSearch forKey:@"savedSearch"];  
+  }
+  return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)restoreView:(NSDictionary*)state {
+  [super restoreView:state];
+  
+  NSString* savedSearch = [state objectForKey:@"savedSearch"];
+  if (TTIsStringWithAnyText(savedSearch)) {
+    self.savedSearch = savedSearch;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  self.savedSearch = searchText;
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-  [self _dismissView];
+  [self dismiss];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewController
-
-- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
-  [_delegate searchController:self didSelectObject:object];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTSearchTextFieldDelegate
-
-- (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
-  [_delegate searchController:self didSelectObject:object];
-}
-
-- (void)_dismissView {
+- (void)dismiss {
   [self dismissModalViewControllerAnimated:YES];
 }
 
