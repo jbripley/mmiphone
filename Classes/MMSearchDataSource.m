@@ -55,7 +55,8 @@
                                               subtitle:[NSString stringWithFormat:@"%@ - %@",
                                                         track.album, track.artist]
                                               URL:[NSString stringWithFormat:
-                                                   @"mmiphone://vote/%@", track.uri]];
+                                                   @"mmiphone://vote/%@", track.uri]
+                                              accessoryURL:track.uri];
     [self.items addObject:searchTrackItem];
   }
 }

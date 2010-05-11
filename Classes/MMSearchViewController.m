@@ -33,7 +33,7 @@
 - (id)init {
   if (self = [super init]) {
     _savedSearch = nil;
-    self.title = @"Find a Song";
+    self.title = @"Find Track";
   }
   return self;
 }
@@ -70,17 +70,20 @@
   _searchController.searchBar.delegate = self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
   if (_savedSearch != nil) {
     _searchController.searchBar.text = _savedSearch;
   }
-  else {
+}
+  
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  if (_savedSearch == nil) {
     [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
                                       withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
   }
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

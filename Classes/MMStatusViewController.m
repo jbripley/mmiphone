@@ -50,9 +50,9 @@
   [super loadView];
   
   self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
-                                   target:kAppSearchURLPath
-                                   action:@selector(openURLFromButton:)] autorelease];
+    [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
+                              target:kAppSearchURLPath
+                              action:@selector(openURLFromButton:)] autorelease];
 }
 
 @end
