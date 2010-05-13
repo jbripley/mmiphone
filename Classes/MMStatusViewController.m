@@ -17,6 +17,8 @@
 #import "MMStatusViewController.h"
 
 #import "MMStatusDataSource.h"
+#import "MMStatusModel.h"
+#import "MMStatus.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +55,17 @@
     [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
                               target:kAppSearchURLPath
                               action:@selector(openURLFromButton:)] autorelease];
+  self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didLoadModel:(BOOL)firstTime {
+  [super didLoadModel:firstTime];
+  
+  MMStatus* status = [(MMStatusModel*)self.dataSource.model status];
+  if (!status.hasVoted) {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+  }
 }
 
 @end

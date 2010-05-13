@@ -24,6 +24,7 @@
 @synthesize playtime      = _playtime;
 @synthesize timeUntilVote = _timeUntilVote;
 @synthesize numVotes      = _numVotes;
+@synthesize hasVoted      = _hasVoted;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {

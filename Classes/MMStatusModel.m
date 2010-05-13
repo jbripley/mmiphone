@@ -19,9 +19,11 @@
 #import "MMStatus.h"
 #import "MMPlaylistTrack.h"
 
+#import "MMUser.h"
+
 #import <extThree20JSON/extThree20JSON.h>
 
-static NSString* kMMStatusFormat = @"%@/status";
+static NSString* kMMStatusFormat = @"%@/status?user=%@";
 static NSString* kMMPlaylistFormat = @"%@/playlist";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +56,8 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
     NSString* serverURL = [[NSUserDefaults standardUserDefaults]
                               stringForKey:@"serverURL_preference"];
     
-    NSString* statusUrl = [NSString stringWithFormat:kMMStatusFormat, serverURL];
+    NSString* statusUrl = [NSString stringWithFormat:
+                           kMMStatusFormat, serverURL, [MMUser getUserId]];
     self.statusRequest = [self _sendStatusRequest:statusUrl];
     self.statusRequestFinished = NO;
     
@@ -121,6 +124,8 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
   
   status.numVotes = [NSNumber numberWithInt:
                  [[statusDict objectForKey:@"numVotes"] intValue]];
+  
+  status.hasVoted = [[statusDict objectForKey:@"numVotes"] boolValue];
   
   _status = status;
   

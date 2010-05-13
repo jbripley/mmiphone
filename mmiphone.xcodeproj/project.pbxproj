@@ -30,6 +30,7 @@
 		1563FA93119A0CDB00EBDE16 /* icon_disc.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563FA8E119A0CDB00EBDE16 /* icon_disc.png */; };
 		1563FA94119A0CDB00EBDE16 /* icon_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563FA8F119A0CDB00EBDE16 /* icon_time.png */; };
 		1563FA95119A0CDB00EBDE16 /* icon_track.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563FA90119A0CDB00EBDE16 /* icon_track.png */; };
+		1563FE60119C6CEC00EBDE16 /* MMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563FE5F119C6CEC00EBDE16 /* MMUser.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -153,6 +154,8 @@
 		1563FA8E119A0CDB00EBDE16 /* icon_disc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_disc.png; sourceTree = "<group>"; };
 		1563FA8F119A0CDB00EBDE16 /* icon_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_time.png; sourceTree = "<group>"; };
 		1563FA90119A0CDB00EBDE16 /* icon_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_track.png; sourceTree = "<group>"; };
+		1563FE5E119C6CEC00EBDE16 /* MMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMUser.h; sourceTree = "<group>"; };
+		1563FE5F119C6CEC00EBDE16 /* MMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMUser.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -196,6 +199,8 @@
 				1563EC37119580CC00EBDE16 /* Controllers */,
 				EB383C0410BBF8A40000B2D2 /* AppDelegate.h */,
 				EB383C0510BBF8A40000B2D2 /* AppDelegate.m */,
+				1563FE5E119C6CEC00EBDE16 /* MMUser.h */,
+				1563FE5F119C6CEC00EBDE16 /* MMUser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				1563F63A119896BB00EBDE16 /* MMXmlTrackParser.m in Sources */,
 				1563F6581198988B00EBDE16 /* MMVoteModel.m in Sources */,
 				1563F65D1198995D00EBDE16 /* MMVoteDataSource.m in Sources */,
+				1563FE60119C6CEC00EBDE16 /* MMUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

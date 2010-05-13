@@ -18,10 +18,12 @@
   NSDate*   _playtime;
   NSDate*   _timeUntilVote;
   NSNumber* _numVotes;
+  BOOL _hasVoted;
 }
 
 @property (nonatomic, retain) NSDate*   playtime;
 @property (nonatomic, retain) NSDate*   timeUntilVote;
 @property (nonatomic, retain) NSNumber* numVotes;
+@property (nonatomic) BOOL hasVoted;
 
 @end
