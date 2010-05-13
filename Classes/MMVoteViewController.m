@@ -54,19 +54,28 @@
   [super loadView];
   
   self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Send Vote" style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(send)] autorelease];
+  [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send Vote", @"")
+                            style:UIBarButtonItemStyleBordered
+                            target:self action:@selector(send)] autorelease];
+  self.navigationItem.rightBarButtonItem.enabled = NO;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didLoadModel:(BOOL)firstTime {
+  [super didLoadModel:firstTime];
+  
+  // Only enable a Send Vote button if a track could be loaded
+  self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 //- (void)confirm {
 //  TTAlertViewController* alert = [[[TTAlertViewController alloc]
-//                                   initWithTitle:@"Send Vote"
-//                                   message:@"Sure you want to send your vote?"] autorelease];
-//  [alert addButtonWithTitle:@"Yes" URL:
+//                                   initWithTitle:NSLocalizedString(@"Send Vote", @"")
+//                                   message:NSLocalizedString(@"Sure you want to send your vote?", @"")] autorelease];
+//  [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"") URL:
 //   [NSString stringWithFormat:kAppSendVoteFormatURLPath,
 //    [(MMVoteModel*)self.dataSource.model trackUri]]];
-//  [alert addCancelButtonWithTitle:@"No" URL:nil];
+//  [alert addCancelButtonWithTitle:NSLocalizedString(@"No", @"") URL:nil];
 //  [alert showInView:[self view] animated:YES];
 //}
 

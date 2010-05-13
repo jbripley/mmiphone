@@ -80,4 +80,9 @@
   TT_RELEASE_SAFELY(sections);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSString*)subtitleForError:(NSError*)error {
+  return NSLocalizedString(@"No track found, please try again.", @"");
+}
+
 @end

@@ -65,12 +65,8 @@
   [_searchModel search:text];
 }
 
-- (NSString*)titleForLoading:(BOOL)reloading {
-  return @"Searching...";
-}
-
 - (NSString*)titleForNoData {
-  return @"No songs found";
+  return NSLocalizedString(@"No tracks found", @"");
 }
 
 @end

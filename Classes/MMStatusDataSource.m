@@ -73,13 +73,15 @@
     }
   }
   else {
-    playingTrackItem = [TTTableSubtitleItem itemWithText:@"No song playing" subtitle:@" "];
+    playingTrackItem = [TTTableSubtitleItem itemWithText:
+                        NSLocalizedString(@"No song playing", @"") subtitle:@" "];
   }
   
   NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"mm:ss"];
   
-  NSString *nextTrackInText = [NSString stringWithFormat:@"Next track in: %@",
+  NSString *nextTrackInText = [NSString stringWithFormat:
+                               NSLocalizedString(@"Next track in: %@", @""),
                                [dateFormatter stringFromDate:_statusModel.status.timeUntilVote]];
   TT_RELEASE_SAFELY(dateFormatter);
   
@@ -93,7 +95,7 @@
   [items addObject:currentTrackItems];
   TT_RELEASE_SAFELY(currentTrackItems);
   
-  [sections addObject:@"Upcoming Playlist"];
+  [sections addObject:NSLocalizedString(@"Upcoming Playlist", @"")];
   [items addObject:playlistTrackItems];
   TT_RELEASE_SAFELY(playlistTrackItems);
   
@@ -105,7 +107,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)subtitleForError:(NSError*)error {
-  return TTLocalizedString(@"Music Machine server was not found", @"");
+  return NSLocalizedString(@"Music Machine server was not found", @"");
 }
 
 @end

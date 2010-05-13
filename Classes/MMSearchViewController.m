@@ -33,7 +33,7 @@
 - (id)init {
   if (self = [super init]) {
     _savedSearch = nil;
-    self.title = @"Find Track";
+    self.title = NSLocalizedString(@"Find Track", @"");
   }
   return self;
 }
@@ -66,7 +66,7 @@
   self.tableView.tableHeaderView = _searchController.searchBar;
   
   _searchController.pausesBeforeSearching = YES;
-  _searchController.searchBar.placeholder = @"Song or Artist";
+  _searchController.searchBar.placeholder = NSLocalizedString(@"Song or Artist", @"");
   _searchController.searchBar.delegate = self;
 }
 

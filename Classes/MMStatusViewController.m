@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if (self = [super init]) {
-    self.title = @"Currently Playing";
+    self.title = NSLocalizedString(@"Currently Playing", @"");
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
   }
@@ -52,7 +52,8 @@
   [super loadView];
   
   self.navigationItem.rightBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@"Vote" style:UIBarButtonItemStyleBordered
+    [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Vote", @"")
+                              style:UIBarButtonItemStyleBordered
                               target:kAppSearchURLPath
                               action:@selector(openURLFromButton:)] autorelease];
   self.navigationItem.rightBarButtonItem.enabled = NO;
