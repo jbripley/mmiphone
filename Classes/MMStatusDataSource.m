@@ -103,4 +103,9 @@
   TT_RELEASE_SAFELY(sections);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSString*)subtitleForError:(NSError*)error {
+  return TTLocalizedString(@"Music Machine server was not found", @"");
+}
+
 @end

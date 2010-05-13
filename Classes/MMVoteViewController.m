@@ -26,17 +26,25 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation MMVoteViewController
 
+@synthesize trackUri = _trackUri;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id) initWithTrackUri:(NSString*)trackUri query:(NSDictionary*)query {
+- (id) initWithTrackUri:(NSString*)trackUri {
   if (self = [super init]) {
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
     
+    self.trackUri = trackUri;
     self.dataSource = [[[MMVoteDataSource alloc] initWithTrackUri:trackUri] autorelease];
   }
 
   return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_trackUri);
+  
+  [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,23 +56,23 @@
   self.navigationItem.rightBarButtonItem =
   [[[UIBarButtonItem alloc] initWithTitle:@"Send Vote" style:UIBarButtonItemStyleBordered
                                    target:self
-                                   action:@selector(confirm)] autorelease];
+                                   action:@selector(send)] autorelease];
 }
 
-- (void)confirm {
-  TTAlertViewController* alert = [[[TTAlertViewController alloc]
-                                   initWithTitle:@"Send Vote"
-                                   message:@"Sure you want to send your vote?"] autorelease];
-  [alert addButtonWithTitle:@"Yes" URL:
-   [NSString stringWithFormat:@"mmiphone://vote/send/%@",
-    [(MMVoteModel*)self.dataSource.model trackUri]]];
-  [alert addCancelButtonWithTitle:@"No" URL:nil];
-  [alert showInView:[self view] animated:YES];
-}
+//- (void)confirm {
+//  TTAlertViewController* alert = [[[TTAlertViewController alloc]
+//                                   initWithTitle:@"Send Vote"
+//                                   message:@"Sure you want to send your vote?"] autorelease];
+//  [alert addButtonWithTitle:@"Yes" URL:
+//   [NSString stringWithFormat:kAppSendVoteFormatURLPath,
+//    [(MMVoteModel*)self.dataSource.model trackUri]]];
+//  [alert addCancelButtonWithTitle:@"No" URL:nil];
+//  [alert showInView:[self view] animated:YES];
+//}
 
-- (void)send:(NSString*)trackUri {
-  TTDINFO(@"Send vote for: %@", trackUri);
-  [self dismissModalViewControllerAnimated:NO];
+- (void)send {
+  TTDINFO(@"Send vote for: %@", self.trackUri);
+  [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
