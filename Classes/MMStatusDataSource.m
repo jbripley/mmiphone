@@ -73,7 +73,7 @@
     }
   }
   else {
-    playingTrackItem = [TTTableSubtitleItem itemWithText:@"No song playing" subtitle:@""];
+    playingTrackItem = [TTTableSubtitleItem itemWithText:@"No song playing" subtitle:@" "];
   }
   
   NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
