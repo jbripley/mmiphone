@@ -28,6 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if (self = [super init]) {
+    _viewAppearFirstTime = YES;
     self.title = NSLocalizedString(@"Currently Playing", @"");
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
@@ -59,14 +60,30 @@
   self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  if (!_viewAppearFirstTime) {
+    [self.model load:TTURLRequestCachePolicyNetwork more:NO];
+  }
+  else {
+    _viewAppearFirstTime = NO;
+  }
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)didLoadModel:(BOOL)firstTime {
   [super didLoadModel:firstTime];
   
   MMStatus* status = [(MMStatusModel*)self.dataSource.model status];
-  if (!status.hasVoted) {
+  if (status.hasVoted) {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+  }
+  else {
     self.navigationItem.rightBarButtonItem.enabled = YES;
   }
+
 }
 
 @end
