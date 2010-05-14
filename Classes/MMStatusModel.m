@@ -57,7 +57,7 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
                               stringForKey:@"serverURL_preference"];
     
     NSString* statusUrl = [NSString stringWithFormat:
-                           kMMStatusFormat, serverURL, [MMUser getUserId]];
+                           kMMStatusFormat, serverURL, [MMUser userId]];
     self.statusRequest = [self _sendStatusRequest:statusUrl];
     self.statusRequestFinished = NO;
     
