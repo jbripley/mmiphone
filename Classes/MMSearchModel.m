@@ -83,7 +83,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   NSMutableArray* tracks = [[NSMutableArray alloc] init];
   
   for(NSDictionary* trackDict in [tracksDict objectForKey:@"track"]) {
-    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict];
+    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:@"SE"];
     
     if (track != nil) {
       [tracks addObject:track];

@@ -20,7 +20,7 @@
 
 @implementation MMXmlTrackParser
 
-+ (MMTrack*)parseTrack:(NSDictionary*)trackDict {
++ (MMTrack*)parseTrack:(NSDictionary*)trackDict forCountry:(NSString*)countryCode {
   if (![trackDict isKindOfClass:[NSDictionary class]]) {
     return nil;
   }
@@ -33,6 +33,16 @@
   NSDictionary* albumDict = [trackDict objectForKey:@"album"];
   if (![albumDict isKindOfClass:[NSDictionary class]]) {
     return nil;
+  }
+  
+  NSDictionary* territoriesDict = [[albumDict objectForKey:@"availability"]
+                                    objectForKey:@"territories"];
+  if ([territoriesDict isKindOfClass:[NSDictionary class]]) {
+    NSString* territories = [territoriesDict objectForKey:@"___Entity_Value___"];
+    if (([territories rangeOfString:countryCode].location == NSNotFound) &&
+        ([territories rangeOfString:@"worldwide"].location == NSNotFound) ) {
+      return nil;
+    }
   }
   
   MMTrack* track = [[[MMTrack alloc] init] autorelease];

@@ -22,6 +22,6 @@
 
 }
 
-+ (MMTrack*)parseTrack:(NSDictionary*)trackDict;
++ (MMTrack*)parseTrack:(NSDictionary*)trackDict forCountry:(NSString*)countryCode;
 
 @end

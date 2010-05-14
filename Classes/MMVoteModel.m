@@ -74,7 +74,7 @@ static NSString* kSpotifyTrackLookupFormat = @"http://ws.spotify.com/lookup/1/?u
   NSDictionary* trackDict = response.rootObject;
   
   TT_RELEASE_SAFELY(_track);
-  MMTrack* track = [MMXmlTrackParser parseTrack:trackDict];
+  MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:@"SE"];
   if (track != nil) {
     _track = [track retain];
   }
