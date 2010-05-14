@@ -102,10 +102,9 @@
   if ([error code] == 409) {
     [self hideSpinner];
     [self showSpinnerWithText:NSLocalizedString(@"Already voted.", @"")];
-    [self performSelector:@selector(hideSpinner)
-      withObject:nil afterDelay:3.0];
     
-    _controller.navigationItem.hidesBackButton = NO;
+    [_controller performSelector:@selector(dismissModalViewControllerAnimated:)
+               withObject:[NSNumber numberWithBool:YES] afterDelay:3.0];
   }
   else {
     [self hideSpinner];
