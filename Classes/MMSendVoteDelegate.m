@@ -50,6 +50,7 @@
   TTDINFO(@"Send vote for: %@", self.sendVoteModel.trackUri);
   
   _controller.navigationItem.rightBarButtonItem.enabled = NO;
+  _controller.navigationItem.hidesBackButton = YES;
   
   [self.sendVoteModel load:TTURLRequestCachePolicyNone more:NO];
   
@@ -103,6 +104,8 @@
     [self showSpinnerWithText:NSLocalizedString(@"Already voted.", @"")];
     [self performSelector:@selector(hideSpinner)
       withObject:nil afterDelay:3.0];
+    
+    _controller.navigationItem.hidesBackButton = NO;
   }
   else {
     [self hideSpinner];
@@ -111,6 +114,7 @@
                withObject:nil afterDelay:3.0];
     
     _controller.navigationItem.rightBarButtonItem.enabled = YES;
+    _controller.navigationItem.hidesBackButton = NO;
   }
 }
 
@@ -121,6 +125,9 @@
   [self hideSpinner];
   [self showSpinnerWithText:NSLocalizedString(@"Vote canceled.", @"")];
   [self performSelector:@selector(hideSpinner) withObject:nil afterDelay:3.0];
+  
+  _controller.navigationItem.rightBarButtonItem.enabled = YES;
+  _controller.navigationItem.hidesBackButton = NO;
 }
 
 @end
