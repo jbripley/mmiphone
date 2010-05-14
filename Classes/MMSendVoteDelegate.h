@@ -14,15 +14,19 @@
 // limitations under the License.
 //
 
-@class MMSendVoteDelegate;
+@class MMSendVoteModel;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MMVoteViewController : TTTableViewController {
-  MMSendVoteDelegate* _sendVoteDelegate;
+@interface MMSendVoteDelegate : TTTableViewDelegate {
+  MMSendVoteModel* _sendVoteModel;
+  TTActivityLabel *_voteActivityLabel;
 }
 
-@property (nonatomic, retain) MMSendVoteDelegate* sendVoteDelegate;
+@property (nonatomic, retain) MMSendVoteModel* sendVoteModel;
+@property (nonatomic,retain) TTActivityLabel *voteActivityLabel;
+
+- (id)initWithTrackUri:(NSString*)trackUri controller:(TTTableViewController*)controller;
+
+- (void)showSpinnerWithText:(NSString*)spinnerText;
+- (void)hideSpinner;
 
 @end

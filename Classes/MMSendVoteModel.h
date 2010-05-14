@@ -12,17 +12,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
-@class MMSendVoteDelegate;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MMVoteViewController : TTTableViewController {
-  MMSendVoteDelegate* _sendVoteDelegate;
+@interface MMSendVoteModel : TTURLRequestModel {
+  NSString* _trackUri;
 }
 
-@property (nonatomic, retain) MMSendVoteDelegate* sendVoteDelegate;
+@property (nonatomic, copy) NSString* trackUri;
+
+- (id)initWithTrackUri:(NSString*)trackUri;
 
 @end

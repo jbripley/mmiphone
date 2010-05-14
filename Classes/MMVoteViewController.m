@@ -17,16 +17,16 @@
 #import "MMVoteViewController.h"
 
 #import "MMVoteDataSource.h"
-
 #import "MMVoteModel.h"
 
+#import "MMSendVoteDelegate.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation MMVoteViewController
 
-@synthesize trackUri = _trackUri;
+@synthesize sendVoteDelegate = _sendVoteDelegate;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) initWithTrackUri:(NSString*)trackUri {
@@ -34,7 +34,7 @@
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
     
-    self.trackUri = trackUri;
+    _sendVoteDelegate = [[MMSendVoteDelegate alloc] initWithTrackUri:trackUri controller:self];
     self.dataSource = [[[MMVoteDataSource alloc] initWithTrackUri:trackUri] autorelease];
   }
 
@@ -42,7 +42,7 @@
 }
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_trackUri);
+  TT_RELEASE_SAFELY(_sendVoteDelegate);
   
   [super dealloc];
 }
@@ -56,7 +56,7 @@
   self.navigationItem.rightBarButtonItem =
   [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send Vote", @"")
                             style:UIBarButtonItemStyleBordered
-                            target:self action:@selector(send)] autorelease];
+                            target:_sendVoteDelegate action:@selector(send)] autorelease];
   self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
@@ -68,20 +68,9 @@
   self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
-//- (void)confirm {
-//  TTAlertViewController* alert = [[[TTAlertViewController alloc]
-//                                   initWithTitle:NSLocalizedString(@"Send Vote", @"")
-//                                   message:NSLocalizedString(@"Sure you want to send your vote?", @"")] autorelease];
-//  [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"") URL:
-//   [NSString stringWithFormat:kAppSendVoteFormatURLPath,
-//    [(MMVoteModel*)self.dataSource.model trackUri]]];
-//  [alert addCancelButtonWithTitle:NSLocalizedString(@"No", @"") URL:nil];
-//  [alert showInView:[self view] animated:YES];
-//}
-
-- (void)send {
-  TTDINFO(@"Send vote for: %@", self.trackUri);
-  [self dismissModalViewControllerAnimated:YES];
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<UITableViewDelegate>)createDelegate {
+  return _sendVoteDelegate;
 }
 
 @end

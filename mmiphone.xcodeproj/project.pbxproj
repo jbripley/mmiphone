@@ -31,6 +31,8 @@
 		1563FA94119A0CDB00EBDE16 /* icon_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563FA8F119A0CDB00EBDE16 /* icon_time.png */; };
 		1563FA95119A0CDB00EBDE16 /* icon_track.png in Resources */ = {isa = PBXBuildFile; fileRef = 1563FA90119A0CDB00EBDE16 /* icon_track.png */; };
 		1563FE60119C6CEC00EBDE16 /* MMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563FE5F119C6CEC00EBDE16 /* MMUser.m */; };
+		15937D51119CACBA00A1CBA8 /* MMSendVoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15937D50119CACBA00A1CBA8 /* MMSendVoteModel.m */; };
+		15937DE7119DB62200A1CBA8 /* MMSendVoteDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15937DE6119DB62200A1CBA8 /* MMSendVoteDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -76,21 +78,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2 /* libextThree20XML.a */;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
 			remoteInfo = extThree20XML;
 		};
 		1563F32D119720AC00EBDE16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* extJSONUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = UnitTests;
 		};
 		1563F330119720C600EBDE16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1563F321119720AC00EBDE16 /* extThree20XML.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2 /* extThree20XML */;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
 			remoteInfo = extThree20XML;
 		};
 		6EF963E8118E96CA003902E7 /* PBXContainerItemProxy */ = {
@@ -156,6 +158,10 @@
 		1563FA90119A0CDB00EBDE16 /* icon_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_track.png; sourceTree = "<group>"; };
 		1563FE5E119C6CEC00EBDE16 /* MMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMUser.h; sourceTree = "<group>"; };
 		1563FE5F119C6CEC00EBDE16 /* MMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMUser.m; sourceTree = "<group>"; };
+		15937D4F119CACBA00A1CBA8 /* MMSendVoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSendVoteModel.h; sourceTree = "<group>"; };
+		15937D50119CACBA00A1CBA8 /* MMSendVoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSendVoteModel.m; sourceTree = "<group>"; };
+		15937DE5119DB62200A1CBA8 /* MMSendVoteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSendVoteDelegate.h; sourceTree = "<group>"; };
+		15937DE6119DB62200A1CBA8 /* MMSendVoteDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSendVoteDelegate.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -327,6 +333,7 @@
 			children = (
 				1563F5E21198725E00EBDE16 /* MMVoteViewController.h */,
 				1563F5E31198725E00EBDE16 /* MMVoteViewController.m */,
+				15937DE4119DB60C00A1CBA8 /* Delegate */,
 				1563F6541198985400EBDE16 /* Data Source */,
 				1563F6551198985D00EBDE16 /* Model */,
 			);
@@ -356,6 +363,8 @@
 			children = (
 				1563F6561198988B00EBDE16 /* MMVoteModel.h */,
 				1563F6571198988B00EBDE16 /* MMVoteModel.m */,
+				15937D4F119CACBA00A1CBA8 /* MMSendVoteModel.h */,
+				15937D50119CACBA00A1CBA8 /* MMSendVoteModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,6 +380,15 @@
 			);
 			name = Images;
 			path = Resources/Images;
+			sourceTree = "<group>";
+		};
+		15937DE4119DB60C00A1CBA8 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				15937DE5119DB62200A1CBA8 /* MMSendVoteDelegate.h */,
+				15937DE6119DB62200A1CBA8 /* MMSendVoteDelegate.m */,
+			);
+			name = Delegate;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -595,6 +613,8 @@
 				1563F6581198988B00EBDE16 /* MMVoteModel.m in Sources */,
 				1563F65D1198995D00EBDE16 /* MMVoteDataSource.m in Sources */,
 				1563FE60119C6CEC00EBDE16 /* MMUser.m in Sources */,
+				15937D51119CACBA00A1CBA8 /* MMSendVoteModel.m in Sources */,
+				15937DE7119DB62200A1CBA8 /* MMSendVoteDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +653,11 @@
 					"TTMAXLOGLEVEL=TTLOGLEVEL_INFO",
 					DEBUG,
 				);
-				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
+				HEADER_SEARCH_PATHS = (
+					../three20/Build/Products/three20,
+					../three20/src/extThree20JSON/Vendors/YAJL,
+					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
+				);
 				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -651,7 +675,11 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mmiphone_Prefix.pch;
-				HEADER_SEARCH_PATHS = ../three20/Build/Products/three20;
+				HEADER_SEARCH_PATHS = (
+					../three20/Build/Products/three20,
+					../three20/src/extThree20JSON/Vendors/YAJL,
+					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
+				);
 				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
