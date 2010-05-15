@@ -89,9 +89,7 @@
 - (void)modelDidFinishLoad:(id<TTModel>)model {
   TTDINFO(@"Vote sent successfully");
   
-  [self hideSpinner];
-  
-  [_controller dismissModalViewControllerAnimated:YES];
+  [self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,14 +101,12 @@
     [self hideSpinner];
     [self showSpinnerWithText:NSLocalizedString(@"Already voted.", @"")];
     
-    [_controller performSelector:@selector(dismissModalViewControllerAnimated:)
-               withObject:[NSNumber numberWithBool:YES] afterDelay:3.0];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:3.0];
   }
   else {
     [self hideSpinner];
     [self showSpinnerWithText:NSLocalizedString(@"Vote failed.", @"")];
-    [self performSelector:@selector(hideSpinner)
-               withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(hideSpinner) withObject:nil afterDelay:3.0];
     
     _controller.navigationItem.rightBarButtonItem.enabled = YES;
     _controller.navigationItem.hidesBackButton = NO;
@@ -127,6 +123,10 @@
   
   _controller.navigationItem.rightBarButtonItem.enabled = YES;
   _controller.navigationItem.hidesBackButton = NO;
+}
+
+- (void)dismiss {
+  [_controller dismissModalViewControllerAnimated:YES];
 }
 
 @end
