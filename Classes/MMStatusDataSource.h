@@ -18,6 +18,17 @@
 
 @interface MMStatusDataSource : TTSectionedDataSource {
   MMStatusModel* _statusModel;
+  
+  NSDate* _timeUntilVote;
+  UITableView* _tableView;
+  
+  NSDateFormatter* _timeFormatter;
+  NSTimer* _nextTrackInTimer;
 }
+
+@property (nonatomic, retain) NSDate* timeUntilVote;
+@property (nonatomic, retain) UITableView* tableView;
+
+@property (nonatomic, retain) NSDateFormatter* timeFormatter;
 
 @end

@@ -25,10 +25,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation MMStatusDataSource
 
+@synthesize timeUntilVote = _timeUntilVote;
+@synthesize tableView = _tableView;
+@synthesize timeFormatter = _timeFormatter;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
   if (self = [super init]) {
     _statusModel = [[MMStatusModel alloc] init];
+    
+    _timeFormatter = [[NSDateFormatter alloc] init];
+    [self.timeFormatter setDateFormat:@"mm:ss"];
   }
   
   return self;
@@ -36,6 +43,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
+  TT_INVALIDATE_TIMER(_nextTrackInTimer);
+  
+  TT_RELEASE_SAFELY(_timeFormatter);
+  TT_RELEASE_SAFELY(_tableView);
+  TT_RELEASE_SAFELY(_timeUntilVote);
   TT_RELEASE_SAFELY(_statusModel);
   
   [super dealloc];
@@ -77,13 +89,12 @@
                         NSLocalizedString(@"No song playing", @"") subtitle:@" "];
   }
   
-  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setDateFormat:@"mm:ss"];
+  
   
   NSString *nextTrackInText = [NSString stringWithFormat:
                                NSLocalizedString(@"Next track in: %@", @""),
-                               [dateFormatter stringFromDate:_statusModel.status.timeUntilVote]];
-  TT_RELEASE_SAFELY(dateFormatter);
+                               [self.timeFormatter stringFromDate:
+                                _statusModel.status.timeUntilVote]];
   
   TTTableGrayTextItem* nextTrackInItem = [TTTableGrayTextItem itemWithText:nextTrackInText];
   
@@ -103,6 +114,36 @@
   self.sections = sections;
   TT_RELEASE_SAFELY(items);
   TT_RELEASE_SAFELY(sections);
+  
+  self.tableView = tableView;
+  self.timeUntilVote = _statusModel.status.timeUntilVote;
+  
+  [_nextTrackInTimer invalidate];
+  _nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self
+    selector:@selector(updateNextTrackIn:) userInfo:nil repeats:YES];
+}
+               
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)updateNextTrackIn:(NSTimer*)timer {
+  NSTimeInterval nextTimeUntilVote = [self.timeUntilVote timeIntervalSince1970];
+  nextTimeUntilVote -= 1.0;
+  if (nextTimeUntilVote <= 0) {
+    [self.model load:TTURLRequestCachePolicyNetwork more:NO];
+    return;
+  }
+  
+  NSString *nextTrackInText = [NSString stringWithFormat:
+                               NSLocalizedString(@"Next track in: %@", @""),
+                               [self.timeFormatter stringFromDate:self.timeUntilVote]];
+  
+  TTTableGrayTextItem* nextTrackInItem = [[self.items objectAtIndex:0] objectAtIndex:1];
+  nextTrackInItem.text = nextTrackInText;
+  
+  self.timeUntilVote = [NSDate dateWithTimeIntervalSince1970:nextTimeUntilVote];
+  
+  [self.tableView reloadRowsAtIndexPaths:
+      [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]]
+    withRowAnimation:UITableViewRowAnimationNone];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
