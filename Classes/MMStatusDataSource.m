@@ -125,6 +125,7 @@
   self.tableView = tableView;
   self.timeUntilVote = _statusModel.status.timeUntilVote;
   
+  [_nextTrackInTimer release];
   TT_INVALIDATE_TIMER(_nextTrackInTimer);
   self.nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self
     selector:@selector(updateNextTrackIn:) userInfo:nil repeats:YES];
@@ -137,6 +138,7 @@
     TTDWARNING(@"Music Machine server's time until vote is wrong: %f", nextTimeUntilVote);
     
     // Check again in 30 seconds if a song is playing
+    [_nextTrackInTimer release];
     TT_INVALIDATE_TIMER(_nextTrackInTimer);
     self.nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self
                              selector:@selector(refreshDataSource) userInfo:nil repeats:NO];
