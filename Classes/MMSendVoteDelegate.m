@@ -72,7 +72,7 @@
 
 - (void)showSpinnerWithText:(NSString*)spinnerText {
   self.voteActivityLabel = [[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBezel];
-  self.voteActivityLabel.font = [UIFont systemFontOfSize:25];
+  self.voteActivityLabel.font = [UIFont systemFontOfSize:22];
   self.voteActivityLabel.text = spinnerText;
   
   [self.voteActivityLabel sizeToFit];

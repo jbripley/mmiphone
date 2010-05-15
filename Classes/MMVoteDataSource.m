@@ -70,7 +70,7 @@
   
   TT_RELEASE_SAFELY(dateFormatter);
   
-  [sections addObject:@"Chosen Track"];
+  [sections addObject:NSLocalizedString(@"Chosen Track", @"")];
   [items addObject:voteTrackItems];
   TT_RELEASE_SAFELY(voteTrackItems);
     
