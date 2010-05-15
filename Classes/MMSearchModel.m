@@ -79,6 +79,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
   NSDictionary* tracksDict = response.rootObject;
+  TTDINFO(@"Number of search results found: %d", [[tracksDict objectForKey:@"track"] count]);
   
   TT_RELEASE_SAFELY(_tracks);
   NSMutableArray* tracks = [[NSMutableArray alloc] init];

@@ -30,5 +30,8 @@
 @property (nonatomic, retain) UITableView* tableView;
 
 @property (nonatomic, retain) NSDateFormatter* timeFormatter;
+@property (nonatomic, retain) NSTimer* nextTrackInTimer;
+
+- (void)refreshDataSource;
 
 @end

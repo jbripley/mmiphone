@@ -28,6 +28,7 @@
 @synthesize timeUntilVote = _timeUntilVote;
 @synthesize tableView = _tableView;
 @synthesize timeFormatter = _timeFormatter;
+@synthesize nextTrackInTimer = _nextTrackInTimer;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
@@ -89,14 +90,20 @@
                         NSLocalizedString(@"No song playing", @"") subtitle:@" "];
   }
   
-  
-  
-  NSString *nextTrackInText = [NSString stringWithFormat:
-                               NSLocalizedString(@"Next track in: %@", @""),
-                               [self.timeFormatter stringFromDate:
-                                _statusModel.status.timeUntilVote]];
-  
-  TTTableGrayTextItem* nextTrackInItem = [TTTableGrayTextItem itemWithText:nextTrackInText];
+  TTTableGrayTextItem* nextTrackInItem;
+  if ([_statusModel.status.timeUntilVote timeIntervalSince1970] > 0) {
+    NSString *nextTrackInText = [NSString stringWithFormat:
+                                 NSLocalizedString(@"Next track in: %@", @""),
+                                 [self.timeFormatter stringFromDate:
+                                  _statusModel.status.timeUntilVote]];
+    
+    nextTrackInItem = [TTTableGrayTextItem itemWithText:nextTrackInText];
+  }
+  else {
+    nextTrackInItem = [TTTableGrayTextItem itemWithText:
+                       [NSString stringWithFormat:
+                        NSLocalizedString(@"Next track in: %@", @""), @"\u221E"]];
+  }
   
   NSMutableArray* currentTrackItems = [[NSMutableArray alloc] init];
   [currentTrackItems addObject:playingTrackItem];
@@ -118,22 +125,26 @@
   self.tableView = tableView;
   self.timeUntilVote = _statusModel.status.timeUntilVote;
   
-  [_nextTrackInTimer invalidate];
-  _nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self
+  TT_INVALIDATE_TIMER(_nextTrackInTimer);
+  self.nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self
     selector:@selector(updateNextTrackIn:) userInfo:nil repeats:YES];
 }
                
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)updateNextTrackIn:(NSTimer*)timer {
-  if ([self.timeUntilVote timeIntervalSince1970] < -2.0) {
-    TTDWARNING(@"Music Machine server's time until vote is wrong: %@", self.timeUntilVote);
-    [_nextTrackInTimer invalidate];
+  NSTimeInterval nextTimeUntilVote = [self.timeUntilVote timeIntervalSince1970] - 1.0;
+  if (nextTimeUntilVote < -3.0) {
+    TTDWARNING(@"Music Machine server's time until vote is wrong: %f", nextTimeUntilVote);
+    
+    // Check again in 30 seconds if a song is playing
+    TT_INVALIDATE_TIMER(_nextTrackInTimer);
+    self.nextTrackInTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self
+                             selector:@selector(refreshDataSource) userInfo:nil repeats:NO];
     return;
   }
   
-  NSTimeInterval nextTimeUntilVote = [self.timeUntilVote timeIntervalSince1970] - 1.0;
   if (nextTimeUntilVote <= 0.0) {
-    [self.model load:TTURLRequestCachePolicyNetwork more:NO];
+    [self refreshDataSource];
     return;
   }
   
@@ -149,6 +160,10 @@
   [self.tableView reloadRowsAtIndexPaths:
       [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]]
     withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)refreshDataSource {
+  [self.model load:TTURLRequestCachePolicyNetwork more:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
