@@ -125,9 +125,14 @@
                
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)updateNextTrackIn:(NSTimer*)timer {
-  NSTimeInterval nextTimeUntilVote = [self.timeUntilVote timeIntervalSince1970];
-  nextTimeUntilVote -= 1.0;
-  if (nextTimeUntilVote <= 0) {
+  if ([self.timeUntilVote timeIntervalSince1970] < -2.0) {
+    TTDWARNING(@"Music Machine server's time until vote is wrong: %@", self.timeUntilVote);
+    [_nextTrackInTimer invalidate];
+    return;
+  }
+  
+  NSTimeInterval nextTimeUntilVote = [self.timeUntilVote timeIntervalSince1970] - 1.0;
+  if (nextTimeUntilVote <= 0.0) {
     [self.model load:TTURLRequestCachePolicyNetwork more:NO];
     return;
   }

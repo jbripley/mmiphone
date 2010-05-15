@@ -55,6 +55,7 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   
   NSString* url = [NSString stringWithFormat:kSpotifyTrackSearchFormat, text];
   TTURLRequest* request = [TTURLRequest requestWithURL:url delegate:self];
+  request.cachePolicy = TTURLRequestCachePolicyNetwork;
   
   TTURLXMLResponse* response = [[TTURLXMLResponse alloc] init];
   response.isRssFeed = YES;
