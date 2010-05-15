@@ -73,8 +73,11 @@ static NSString* kSpotifyTrackLookupFormat = @"http://ws.spotify.com/lookup/1/?u
   
   NSDictionary* trackDict = response.rootObject;
   
+  NSString* countryCode = [[NSUserDefaults standardUserDefaults]
+                           stringForKey:@"countryCode_preference"];
+  
   TT_RELEASE_SAFELY(_track);
-  MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:@"SE"];
+  MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:countryCode];
   if (track != nil) {
     _track = [track retain];
   }

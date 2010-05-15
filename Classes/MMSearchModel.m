@@ -84,8 +84,10 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   TT_RELEASE_SAFELY(_tracks);
   NSMutableArray* tracks = [[NSMutableArray alloc] init];
   
+  NSString* countryCode = [[NSUserDefaults standardUserDefaults]
+                           stringForKey:@"countryCode_preference"];
   for(NSDictionary* trackDict in [tracksDict objectForKey:@"track"]) {
-    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:@"SE"];
+    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:countryCode];
     
     if (track != nil) {
       [tracks addObject:track];

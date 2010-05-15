@@ -10,13 +10,13 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Server Settings</string>
+			<string>Music Machine Server</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Server URL</string>
+			<string>URL</string>
 			<key>Key</key>
 			<string>serverURL_preference</string>
 			<key>DefaultValue</key>
@@ -29,6 +29,40 @@
 			<string>None</string>
 			<key>AutocorrectionType</key>
 			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Spotify</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Country</string>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Key</key>
+			<string>countryCode_preference</string>
+			<key>DefaultValue</key>
+			<string>SE</string>
+			<key>Titles</key>
+			<array>
+				<string>Finland</string>
+				<string>France</string>
+				<string>Norway</string>
+				<string>Spain</string>
+				<string>Sweden</string>
+				<string>Great Britain</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>FI</string>
+				<string>FR</string>
+				<string>NO</string>
+				<string>ES</string>
+				<string>SE</string>
+				<string>GB</string>
+			</array>
 		</dict>
 	</array>
 </dict>

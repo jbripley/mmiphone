@@ -8,7 +8,9 @@ Music Machine for iPhone (MM iPhone) is a client to the [Music Machine server](h
 1. Clone the [Three20](http://github.com/facebook/three20) library in the same root folder as MM iPhone.
 2. A Xcode project is included and compiling for the iPhone or Simulator should just work.
 3. Install app onto iPhone or Simulator.
-4. [First time or when server IP changes] Go to Settings > mmiphone, and enter the URL for your server.
+4. [First time or when server IP changes] Go to Settings > Music Machine
+    1. Enter the URL for your server
+    2. Select which country your MM Server's spotify account is from
 5. All set, everything should work now.
 
 ## Screenshots
