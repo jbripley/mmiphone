@@ -37,6 +37,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   if (self = [super init]) {
     _delegates = nil;
     _tracks = nil;
+    _request = nil;
   }
   return self;
 }
@@ -71,7 +72,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   
   TTDINFO(@"Sending search to URL: %@", urlString);
   TTURLRequest* request = [TTURLRequest requestWithURL:urlString delegate:self];
-  request.cachePolicy = TTURLRequestCachePolicyNetwork;
+  request.cachePolicy = TTURLRequestCachePolicyDefault;
   
   TTURLXMLResponse* response = [[TTURLXMLResponse alloc] init];
   response.isRssFeed = YES;
@@ -153,7 +154,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 }
 
 - (BOOL)isLoading {
-  return !!_request;
+  return !(_request == nil);
 }
 
 - (BOOL)isEmpty {
