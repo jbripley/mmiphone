@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150F192311A0221B00F0605A /* MMTableTrackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F192211A0221B00F0605A /* MMTableTrackItem.m */; };
+		150F192611A022F300F0605A /* MMTableTrackItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F192511A022F300F0605A /* MMTableTrackItemCell.m */; };
 		1563EC40119581F900EBDE16 /* MMStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC3F119581F900EBDE16 /* MMStatusViewController.m */; };
 		1563EC43119582E000EBDE16 /* MMStatusDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC42119582E000EBDE16 /* MMStatusDataSource.m */; };
 		1563EC541195849000EBDE16 /* MMStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC531195849000EBDE16 /* MMStatus.m */; };
@@ -121,6 +123,10 @@
 
 /* Begin PBXFileReference section */
 		150F1646119EE7F600F0605A /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = sv; path = "sv.lproj/mmiphone-Info.plist"; sourceTree = "<group>"; };
+		150F192111A0221B00F0605A /* MMTableTrackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackItem.h; sourceTree = "<group>"; };
+		150F192211A0221B00F0605A /* MMTableTrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackItem.m; sourceTree = "<group>"; };
+		150F192411A022F300F0605A /* MMTableTrackItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackItemCell.h; sourceTree = "<group>"; };
+		150F192511A022F300F0605A /* MMTableTrackItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackItemCell.m; sourceTree = "<group>"; };
 		1563EC3E119581F900EBDE16 /* MMStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusViewController.h; sourceTree = "<group>"; };
 		1563EC3F119581F900EBDE16 /* MMStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStatusViewController.m; sourceTree = "<group>"; };
 		1563EC41119582E000EBDE16 /* MMStatusDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusDataSource.h; sourceTree = "<group>"; };
@@ -204,15 +210,45 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1563F6371198968B00EBDE16 /* XML Parser */,
-				1563F1AD1196F51D00EBDE16 /* Shared Objects */,
+				150F191F11A0214300F0605A /* Shared */,
 				1563EC37119580CC00EBDE16 /* Controllers */,
 				EB383C0410BBF8A40000B2D2 /* AppDelegate.h */,
 				EB383C0510BBF8A40000B2D2 /* AppDelegate.m */,
-				1563FE5E119C6CEC00EBDE16 /* MMUser.h */,
-				1563FE5F119C6CEC00EBDE16 /* MMUser.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		150F191E11A0211500F0605A /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				1563EE5C1195AC3100EBDE16 /* MMTrack.h */,
+				1563EE5D1195AC3100EBDE16 /* MMTrack.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		150F191F11A0214300F0605A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1563F638119896BB00EBDE16 /* MMXmlTrackParser.h */,
+				1563F639119896BB00EBDE16 /* MMXmlTrackParser.m */,
+				1563FE5E119C6CEC00EBDE16 /* MMUser.h */,
+				1563FE5F119C6CEC00EBDE16 /* MMUser.m */,
+				150F192011A021B500F0605A /* Table Items */,
+				150F191E11A0211500F0605A /* Objects */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		150F192011A021B500F0605A /* Table Items */ = {
+			isa = PBXGroup;
+			children = (
+				150F192111A0221B00F0605A /* MMTableTrackItem.h */,
+				150F192211A0221B00F0605A /* MMTableTrackItem.m */,
+				150F192411A022F300F0605A /* MMTableTrackItemCell.h */,
+				150F192511A022F300F0605A /* MMTableTrackItemCell.m */,
+			);
+			name = "Table Items";
 			sourceTree = "<group>";
 		};
 		1563EC37119580CC00EBDE16 /* Controllers */ = {
@@ -285,15 +321,6 @@
 			name = Atlas;
 			sourceTree = "<group>";
 		};
-		1563F1AD1196F51D00EBDE16 /* Shared Objects */ = {
-			isa = PBXGroup;
-			children = (
-				1563EE5C1195AC3100EBDE16 /* MMTrack.h */,
-				1563EE5D1195AC3100EBDE16 /* MMTrack.m */,
-			);
-			name = "Shared Objects";
-			sourceTree = "<group>";
-		};
 		1563F1E21196FD0800EBDE16 /* Search Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,15 +369,6 @@
 				1563F6551198985D00EBDE16 /* Model */,
 			);
 			name = "Vote Controller";
-			sourceTree = "<group>";
-		};
-		1563F6371198968B00EBDE16 /* XML Parser */ = {
-			isa = PBXGroup;
-			children = (
-				1563F638119896BB00EBDE16 /* MMXmlTrackParser.h */,
-				1563F639119896BB00EBDE16 /* MMXmlTrackParser.m */,
-			);
-			name = "XML Parser";
 			sourceTree = "<group>";
 		};
 		1563F6541198985400EBDE16 /* Data Source */ = {
@@ -628,6 +646,8 @@
 				1563FE60119C6CEC00EBDE16 /* MMUser.m in Sources */,
 				15937D51119CACBA00A1CBA8 /* MMSendVoteModel.m in Sources */,
 				15937DE7119DB62200A1CBA8 /* MMSendVoteDelegate.m in Sources */,
+				150F192311A0221B00F0605A /* MMTableTrackItem.m in Sources */,
+				150F192611A022F300F0605A /* MMTableTrackItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
