@@ -48,6 +48,7 @@
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   navigator.delegate = self;
+  navigator.opensExternalURLs = YES;
 
   TTURLMap* map = navigator.URLMap;
 

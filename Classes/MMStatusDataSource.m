@@ -84,7 +84,7 @@
       MMTableTrackItem* playlistTrackItem = [MMTableTrackItem itemWithText:track.title
                                             subtitle:[NSString stringWithFormat:@"%@ - %@",
                                                       track.album, track.artist]
-                                            URL:track.uri];
+                                            URL:track.uri accessoryURL:track.uri];
       [playlistTrackItems addObject:playlistTrackItem];
     }
   }

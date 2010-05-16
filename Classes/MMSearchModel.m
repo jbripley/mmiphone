@@ -43,7 +43,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void) dealloc {
+- (void)dealloc {
   [_request cancel];
   
   TT_RELEASE_SAFELY(_delegates);
