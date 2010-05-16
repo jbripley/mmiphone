@@ -28,7 +28,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if (self = [super init]) {
-    _viewAppearFirstTime = YES;
     self.title = NSLocalizedString(@"Currently Playing", @"");
     self.variableHeightRows = YES;
     self.tableViewStyle = UITableViewStyleGrouped;
@@ -59,12 +58,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  if (!_viewAppearFirstTime) {
-    [self.model load:TTURLRequestCachePolicyNetwork more:NO];
-  }
-  else {
-    _viewAppearFirstTime = NO;
-  }
+  [self.model load:TTURLRequestCachePolicyNetwork more:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
