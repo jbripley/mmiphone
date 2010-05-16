@@ -78,6 +78,13 @@ static NSString* kMMPlaylistFormat = @"%@/playlist";
   
   if (self.statusRequestFinished && self.playlistRequestFinished) {
     [super requestDidFinishLoad:request];
+    if (request == self.playlistRequest) {
+      [super requestDidFinishLoad:self.statusRequest];
+    }
+    else {
+      [super requestDidFinishLoad:self.playlistRequest];
+    }
+
   }
 }
 
