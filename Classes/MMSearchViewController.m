@@ -56,9 +56,11 @@
 - (void)loadView {
   [super loadView];
   
-  self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
-                                           initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                           target:self action:@selector(dismiss)] autorelease];
+  UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc]
+                                    initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                    target:self action:@selector(dismiss)];
+  self.navigationItem.rightBarButtonItem = cancelButton;
+  TT_RELEASE_SAFELY(cancelButton);
   
   TTTableViewController* searchController = [[[TTTableViewController alloc] init] autorelease];
   searchController.dataSource = [[[MMSearchDataSource alloc] init] autorelease];
