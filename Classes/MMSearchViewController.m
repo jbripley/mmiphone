@@ -68,23 +68,21 @@
   self.tableView.tableHeaderView = _searchController.searchBar;
   
   _searchController.pausesBeforeSearching = YES;
-  _searchController.searchBar.placeholder = NSLocalizedString(@"Song or Artist", @"");
-  _searchController.searchBar.delegate = self;
+  self.searchDisplayController.searchBar.placeholder = NSLocalizedString(@"Song or Artist", @"");
+  self.searchDisplayController.searchBar.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  
-  if (_savedSearch != nil) {
-    _searchController.searchBar.text = _savedSearch;
-  }
-}
-  
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  if (_savedSearch == nil) {
-    [_searchController.searchBar performSelector:@selector(becomeFirstResponder)
-                                      withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
+  
+  [self performSelector:@selector(setupSearch)
+    withObject:nil afterDelay:TT_FAST_TRANSITION_DURATION];
+}
+
+- (void)setupSearch {
+  [_searchController.searchBar becomeFirstResponder];
+  if (_savedSearch != nil) {
+    _searchController.searchBar.text = _savedSearch;
   }
 }
 
