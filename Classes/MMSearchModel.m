@@ -1,9 +1,17 @@
 //
-//  MMSearchModel.m
-//  mmiphone
+// Copyright 2010 Joakim Bodin
 //
-//  Created by Joakim Bodin on 2010-05-09.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
 #import "MMSearchModel.h"
@@ -14,7 +22,9 @@
 
 #import <extThree20XML/extThree20XML.h>
 
-static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/track?q=%@";
+static NSString* kSpotifyTrackSearchScheme = @"http";
+static NSString* kSpotifyTrackSearchHost = @"ws.spotify.com";
+static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 
 @implementation MMSearchModel
 
@@ -53,8 +63,14 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   
   [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
   
-  NSString* url = [NSString stringWithFormat:kSpotifyTrackSearchFormat, text];
-  TTURLRequest* request = [TTURLRequest requestWithURL:url delegate:self];
+  NSURL* url = [[NSURL alloc] initWithScheme:kSpotifyTrackSearchScheme
+                host:kSpotifyTrackSearchHost
+                path:[NSString stringWithFormat:kSpotifyTrackSearchPathFormat, text]];
+  NSString* urlString = [url absoluteString];
+  TT_RELEASE_SAFELY(url);
+  
+  TTDINFO(@"Sending search to URL: %@", urlString);
+  TTURLRequest* request = [TTURLRequest requestWithURL:urlString delegate:self];
   request.cachePolicy = TTURLRequestCachePolicyNetwork;
   
   TTURLXMLResponse* response = [[TTURLXMLResponse alloc] init];
@@ -73,8 +89,6 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-  [super requestDidFinishLoad:request];
-  
   TTURLXMLResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
@@ -97,6 +111,21 @@ static NSString* kSpotifyTrackSearchFormat = @"http://ws.spotify.com/search/1/tr
   
   TT_RELEASE_SAFELY(_request);
   [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+  [super requestDidFinishLoad:request];
+}
+
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+  TT_RELEASE_SAFELY(_request);
+  
+  [_delegates perform:@selector(model:didFailLoadWithError:) withObject:self withObject:error];
+  [super request:request didFailLoadWithError:error];
+}
+
+- (void)requestDidCancelLoad:(TTURLRequest*)request {
+  TT_RELEASE_SAFELY(_request);
+  
+  [_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
+  [super requestDidCancelLoad:request];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
