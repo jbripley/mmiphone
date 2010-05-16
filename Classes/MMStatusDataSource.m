@@ -20,6 +20,9 @@
 #import "MMStatus.h"
 #import "MMPlaylistTrack.h"
 
+#import "MMTableTrackItem.h"
+#import "MMTableTrackItemCell.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,12 +67,12 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
   NSMutableArray* sections = [[NSMutableArray alloc] init];
   
-  TTTableSubtitleItem* playingTrackItem = nil;
+  MMTableTrackItem* playingTrackItem = nil;
   NSMutableArray* playlistTrackItems = [[NSMutableArray alloc] init];
   if ([_statusModel.tracks count] > 0) {
     MMPlaylistTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
     
-    playingTrackItem = [TTTableSubtitleItem itemWithText:currentTrack.title
+    playingTrackItem = [MMTableTrackItem itemWithText:currentTrack.title
                         subtitle:[NSString stringWithFormat:@"%@ - %@",
                                   currentTrack.album, currentTrack.artist]];
     
@@ -78,7 +81,7 @@
         continue;
       }
       
-      TTTableSubtitleItem* playlistTrackItem = [TTTableSubtitleItem itemWithText:track.title
+      MMTableTrackItem* playlistTrackItem = [MMTableTrackItem itemWithText:track.title
                                             subtitle:[NSString stringWithFormat:@"%@ - %@",
                                                       track.album, track.artist]
                                             URL:track.uri];
@@ -86,7 +89,7 @@
     }
   }
   else {
-    playingTrackItem = [TTTableSubtitleItem itemWithText:
+    playingTrackItem = [MMTableTrackItem itemWithText:
                         NSLocalizedString(@"No song playing", @"") subtitle:@" "];
   }
   
@@ -166,6 +169,20 @@
 
 - (void)refreshDataSource {
   [self.model load:TTURLRequestCachePolicyNetwork more:NO];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTLoadable
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
+  if([object isKindOfClass:[TTTableItem class]]) {
+    if ([object isKindOfClass:[MMTableTrackItem class]]) {
+      return [MMTableTrackItemCell class];
+    }
+    return [super tableView:tableView cellClassForObject:object];
+  }
+  
+  return nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

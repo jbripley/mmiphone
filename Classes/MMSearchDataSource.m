@@ -19,6 +19,9 @@
 #import "MMSearchModel.h"
 #import "MMTrack.h"
 
+#import "MMTableTrackItem.h"
+#import "MMTableTrackItemCell.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +54,7 @@
   self.items = [NSMutableArray array];
   
   for (MMTrack* track in _searchModel.tracks) {
-    TTTableSubtitleItem* searchTrackItem = [TTTableSubtitleItem itemWithText:track.title
+    MMTableTrackItem* searchTrackItem = [MMTableTrackItem itemWithText:track.title
                                               subtitle:[NSString stringWithFormat:@"%@ - %@",
                                                         track.album, track.artist]
                                               URL:[NSString stringWithFormat:
@@ -63,6 +66,20 @@
 
 - (void)search:(NSString*)text {
   [_searchModel search:text];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTLoadable
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
+  if([object isKindOfClass:[TTTableItem class]]) {
+    if ([object isKindOfClass:[MMTableTrackItem class]]) {
+      return [MMTableTrackItemCell class];
+    }
+      return [super tableView:tableView cellClassForObject:object];
+    }
+
+  return nil;
 }
 
 - (NSString*)titleForNoData {
