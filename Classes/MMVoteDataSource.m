@@ -19,6 +19,9 @@
 #import "MMVoteModel.h"
 #import "MMTrack.h"
 
+#import "MMTableTrackDetailItem.h"
+#import "MMTableTrackDetailItemCell.h"
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,17 +55,17 @@
   
   NSMutableArray* voteTrackItems = [[NSMutableArray alloc] init];
   
-  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.title
+  [voteTrackItems addObject:[MMTableTrackDetailItem itemWithText:_voteModel.track.title
                               imageURL:@"bundle://icon_track.png" URL:nil]];
-  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.artist
+  [voteTrackItems addObject:[MMTableTrackDetailItem itemWithText:_voteModel.track.artist
                               imageURL:@"bundle://icon_artist.png" URL:nil]];
-  [voteTrackItems addObject:[TTTableImageItem itemWithText:_voteModel.track.album
+  [voteTrackItems addObject:[MMTableTrackDetailItem itemWithText:_voteModel.track.album
                               imageURL:@"bundle://icon_disc.png" URL:nil]];
   
   NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"mm:ss"];
   
-  [voteTrackItems addObject:[TTTableImageItem itemWithText:
+  [voteTrackItems addObject:[MMTableTrackDetailItem itemWithText:
                              [dateFormatter stringFromDate:
                               [NSDate dateWithTimeIntervalSince1970:
                                [_voteModel.track.length doubleValue]]]
@@ -78,6 +81,20 @@
   self.sections = sections;
   TT_RELEASE_SAFELY(items);
   TT_RELEASE_SAFELY(sections);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTLoadable
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object {
+  if([object isKindOfClass:[TTTableItem class]]) {
+    if ([object isKindOfClass:[MMTableTrackDetailItem class]]) {
+      return [MMTableTrackDetailItemCell class];
+    }
+    return [super tableView:tableView cellClassForObject:object];
+  }
+  
+  return nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
