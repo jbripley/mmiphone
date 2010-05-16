@@ -11,6 +11,7 @@
 		150F192611A022F300F0605A /* MMTableTrackItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F192511A022F300F0605A /* MMTableTrackItemCell.m */; };
 		150F1A1111A02E7000F0605A /* MMTableTrackDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */; };
 		150F1A1411A02E8400F0605A /* MMTableTrackDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */; };
+		150F1BB211A0B62A00F0605A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 150F1BB111A0B62A00F0605A /* Default.png */; };
 		1563EC40119581F900EBDE16 /* MMStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC3F119581F900EBDE16 /* MMStatusViewController.m */; };
 		1563EC43119582E000EBDE16 /* MMStatusDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC42119582E000EBDE16 /* MMStatusDataSource.m */; };
 		1563EC541195849000EBDE16 /* MMStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC531195849000EBDE16 /* MMStatus.m */; };
@@ -133,6 +134,7 @@
 		150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackDetailItem.m; sourceTree = "<group>"; };
 		150F1A1211A02E8400F0605A /* MMTableTrackDetailItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackDetailItemCell.h; sourceTree = "<group>"; };
 		150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackDetailItemCell.m; sourceTree = "<group>"; };
+		150F1BB111A0B62A00F0605A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1563EC3E119581F900EBDE16 /* MMStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusViewController.h; sourceTree = "<group>"; };
 		1563EC3F119581F900EBDE16 /* MMStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStatusViewController.m; sourceTree = "<group>"; };
 		1563EC41119582E000EBDE16 /* MMStatusDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusDataSource.h; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* mmiphone.xcdatamodel */,
 				150F1644119EE7EA00F0605A /* mmiphone-Info.plist */,
+				150F1BB111A0B62A00F0605A /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				1563FA94119A0CDB00EBDE16 /* icon_time.png in Resources */,
 				1563FA95119A0CDB00EBDE16 /* icon_track.png in Resources */,
 				159381AA119EB66100A1CBA8 /* Localizable.strings in Resources */,
+				150F1BB211A0B62A00F0605A /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
