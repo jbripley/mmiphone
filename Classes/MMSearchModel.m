@@ -100,9 +100,18 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   
   NSString* countryCode = [[NSUserDefaults standardUserDefaults]
                            stringForKey:@"countryCode_preference"];
-  for(NSDictionary* trackDict in [tracksDict objectForKey:@"track"]) {
-    MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:countryCode];
-    
+  
+  NSDictionary* trackList = [tracksDict objectForKey:@"track"];
+  if ([trackList isKindOfClass:[NSArray class]]) {
+    for(NSDictionary* trackDict in trackList) {
+      MMTrack* track = [MMXmlTrackParser parseTrack:trackDict forCountry:countryCode]; 
+      if (track != nil) {
+        [tracks addObject:track];
+      }
+    }
+  }
+  else {
+    MMTrack* track = [MMXmlTrackParser parseTrack:trackList forCountry:countryCode];
     if (track != nil) {
       [tracks addObject:track];
     }
