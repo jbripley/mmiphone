@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>serverURL_preference</string>
 			<key>DefaultValue</key>
-			<string>http://192.168.0.1:8080</string>
+			<string>http://localhost:6170</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
