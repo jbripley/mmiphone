@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		150F192311A0221B00F0605A /* MMTableTrackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F192211A0221B00F0605A /* MMTableTrackItem.m */; };
 		150F192611A022F300F0605A /* MMTableTrackItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F192511A022F300F0605A /* MMTableTrackItemCell.m */; };
+		150F1A1111A02E7000F0605A /* MMTableTrackDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */; };
+		150F1A1411A02E8400F0605A /* MMTableTrackDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */; };
 		1563EC40119581F900EBDE16 /* MMStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC3F119581F900EBDE16 /* MMStatusViewController.m */; };
 		1563EC43119582E000EBDE16 /* MMStatusDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC42119582E000EBDE16 /* MMStatusDataSource.m */; };
 		1563EC541195849000EBDE16 /* MMStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC531195849000EBDE16 /* MMStatus.m */; };
@@ -127,6 +129,10 @@
 		150F192211A0221B00F0605A /* MMTableTrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackItem.m; sourceTree = "<group>"; };
 		150F192411A022F300F0605A /* MMTableTrackItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackItemCell.h; sourceTree = "<group>"; };
 		150F192511A022F300F0605A /* MMTableTrackItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackItemCell.m; sourceTree = "<group>"; };
+		150F1A0F11A02E7000F0605A /* MMTableTrackDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackDetailItem.h; sourceTree = "<group>"; };
+		150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackDetailItem.m; sourceTree = "<group>"; };
+		150F1A1211A02E8400F0605A /* MMTableTrackDetailItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackDetailItemCell.h; sourceTree = "<group>"; };
+		150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackDetailItemCell.m; sourceTree = "<group>"; };
 		1563EC3E119581F900EBDE16 /* MMStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusViewController.h; sourceTree = "<group>"; };
 		1563EC3F119581F900EBDE16 /* MMStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStatusViewController.m; sourceTree = "<group>"; };
 		1563EC41119582E000EBDE16 /* MMStatusDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusDataSource.h; sourceTree = "<group>"; };
@@ -247,6 +253,10 @@
 				150F192211A0221B00F0605A /* MMTableTrackItem.m */,
 				150F192411A022F300F0605A /* MMTableTrackItemCell.h */,
 				150F192511A022F300F0605A /* MMTableTrackItemCell.m */,
+				150F1A0F11A02E7000F0605A /* MMTableTrackDetailItem.h */,
+				150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */,
+				150F1A1211A02E8400F0605A /* MMTableTrackDetailItemCell.h */,
+				150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */,
 			);
 			name = "Table Items";
 			sourceTree = "<group>";
@@ -648,6 +658,8 @@
 				15937DE7119DB62200A1CBA8 /* MMSendVoteDelegate.m in Sources */,
 				150F192311A0221B00F0605A /* MMTableTrackItem.m in Sources */,
 				150F192611A022F300F0605A /* MMTableTrackItemCell.m in Sources */,
+				150F1A1111A02E7000F0605A /* MMTableTrackDetailItem.m in Sources */,
+				150F1A1411A02E8400F0605A /* MMTableTrackDetailItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
