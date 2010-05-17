@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+#import "AppDelegate.h"
+
 #import "MMStatusDataSource.h"
 
 #import "MMStatusModel.h"
@@ -70,6 +72,9 @@
   MMTableTrackItem* playingTrackItem = nil;
   NSMutableArray* playlistTrackItems = [[NSMutableArray alloc] init];
   if ([_statusModel.tracks count] > 0) {
+    BOOL canOpenSpotifyUri = [(AppDelegate*)[UIApplication sharedApplication].delegate
+                              canOpenSpotifyUri];
+    
     MMPlaylistTrack* currentTrack = [_statusModel.tracks objectAtIndex:0];
     
     playingTrackItem = [MMTableTrackItem itemWithText:currentTrack.title
@@ -83,8 +88,15 @@
       
       MMTableTrackItem* playlistTrackItem = [MMTableTrackItem itemWithText:track.title
                                             subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                                      track.album, track.artist]
-                                            URL:track.uri accessoryURL:track.uri];
+                                                      track.album, track.artist]];
+      
+      if (canOpenSpotifyUri) {
+        playlistTrackItem.URL = [NSString stringWithFormat:
+                                 kAppSpotifyConfirmFormatURLPath, track.uri];
+        playlistTrackItem.accessoryURL = [NSString stringWithFormat:
+                                          kAppSpotifyConfirmFormatURLPath, track.uri];
+      }
+      
       [playlistTrackItems addObject:playlistTrackItem];
     }
   }

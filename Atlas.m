@@ -21,3 +21,6 @@ NSString* kAppSearchURLPath = @"mmiphone://search";
 
 NSString* kAppVoteURLPath = @"mmiphone://vote/(initWithTrackUri:)";
 NSString* kAppVoteFormatURLPath = @"mmiphone://vote/%@";
+
+NSString* kAppSpotifyConfirmURLPath = @"mmiphone://spotify/confirm/(confirmSpotifyOpen:)";
+NSString* kAppSpotifyConfirmFormatURLPath = @"mmiphone://spotify/confirm/%@";

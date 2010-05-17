@@ -29,10 +29,14 @@
   // App State
   BOOL                          _modelCreated;
   BOOL                          _resetModel;
+    
+  BOOL                          _canOpenSpotifyUri;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, readonly)         NSString*               applicationDocumentsDirectory;
+
+@property (nonatomic, readonly)         BOOL                    canOpenSpotifyUri;
 
 
 @end

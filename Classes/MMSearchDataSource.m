@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+#import "AppDelegate.h"
+
 #import "MMSearchDataSource.h"
 
 #import "MMSearchModel.h"
@@ -53,13 +55,21 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   self.items = [NSMutableArray array];
   
+  BOOL canOpenSpotifyUri = [(AppDelegate*)[UIApplication sharedApplication].delegate
+                            canOpenSpotifyUri];
+  
   for (MMTrack* track in _searchModel.tracks) {
     MMTableTrackItem* searchTrackItem = [MMTableTrackItem itemWithText:track.title
-                                              subtitle:[NSString stringWithFormat:@"%@ - %@",
-                                                        track.album, track.artist]
-                                              URL:[NSString stringWithFormat:
-                                                   @"mmiphone://vote/%@", track.uri]
-                                              accessoryURL:track.uri];
+                                          subtitle:[NSString stringWithFormat:@"%@ - %@",
+                                                    track.album, track.artist]
+                                          URL:[NSString stringWithFormat:
+                                               kAppVoteFormatURLPath, track.uri]];
+    
+    if (canOpenSpotifyUri) {
+      searchTrackItem.accessoryURL = [NSString stringWithFormat:
+                                      kAppSpotifyConfirmFormatURLPath, track.uri];
+    }
+
     [self.items addObject:searchTrackItem];
   }
 }

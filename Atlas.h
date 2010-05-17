@@ -21,3 +21,6 @@ extern NSString* kAppSearchURLPath;
 
 extern NSString* kAppVoteURLPath;
 extern NSString* kAppVoteFormatURLPath;
+
+extern NSString* kAppSpotifyConfirmURLPath;
+extern NSString* kAppSpotifyConfirmFormatURLPath;

@@ -39,6 +39,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation AppDelegate
 
+@synthesize canOpenSpotifyUri = _canOpenSpotifyUri;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -49,6 +50,9 @@
   navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   navigator.delegate = self;
   navigator.opensExternalURLs = YES;
+  
+  _canOpenSpotifyUri = [[UIApplication sharedApplication]
+                        canOpenURL:[NSURL URLWithString:@"spotify:track:2whPdsIFZRFJQVROqP98uS"]];
 
   TTURLMap* map = navigator.URLMap;
 
@@ -56,6 +60,8 @@
   [map from:kAppRootURLPath toViewController:[MMStatusViewController class]];
   [map from:kAppSearchURLPath toModalViewController:[MMSearchViewController class] ];
   [map from:kAppVoteURLPath toViewController:[MMVoteViewController class]];
+  [map from:kAppSpotifyConfirmURLPath toViewController:self
+   selector:@selector(confirmSpotifyOpen:)];
 
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
@@ -72,15 +78,20 @@
 	[super dealloc];
 }
 
+- (UIViewController*)confirmSpotifyOpen:(NSString*)trackUri {
+  TTAlertViewController* alert = [[[TTAlertViewController alloc]
+                                   initWithTitle:NSLocalizedString(@"Play in Spotify", @"")
+                                   message:
+                                    NSLocalizedString(@"Want to play this track in Spotify?", @"")]
+                                  autorelease];
+  [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"") URL:trackUri];
+  [alert addCancelButtonWithTitle:NSLocalizedString(@"No", @"") URL:nil];
+  return alert;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
-  if (![[URL scheme] isEqualToString:@"spotify"]) {
-    return YES;
-  }
-  else {
-    return [[UIApplication sharedApplication] canOpenURL:URL];
-  }
+  return YES;
 }
 
 
