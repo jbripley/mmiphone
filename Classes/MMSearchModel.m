@@ -38,6 +38,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
     _delegates = nil;
     _tracks = nil;
     _request = nil;
+    _loading = YES;
   }
   return self;
 }
@@ -62,6 +63,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
     return;
   }
   
+  _loading = YES;
   [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
   
   NSURL* url = [[NSURL alloc] initWithScheme:kSpotifyTrackSearchScheme
@@ -119,12 +121,14 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   }
   _tracks = tracks;
   
+  _loading = NO;
   TT_RELEASE_SAFELY(_request);
   [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
   [super requestDidFinishLoad:request];
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+  _loading = NO;
   TT_RELEASE_SAFELY(_request);
   
   [_delegates perform:@selector(model:didFailLoadWithError:) withObject:self withObject:error];
@@ -132,6 +136,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 }
 
 - (void)requestDidCancelLoad:(TTURLRequest*)request {
+  _loading = NO;
   TT_RELEASE_SAFELY(_request);
   
   [_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
@@ -149,12 +154,11 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 }
 
 - (BOOL)isLoaded {
-  BOOL isLoaded = !(_tracks == nil);
-  return isLoaded;
+  return !_loading;
 }
 
 - (BOOL)isLoading {
-  return !(_request == nil);
+  return _loading;
 }
 
 - (BOOL)isEmpty {

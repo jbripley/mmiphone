@@ -21,6 +21,7 @@
   NSArray*  _tracks;
 
   TTURLRequest* _request;
+  BOOL _loading;
 }
 
 @property (nonatomic, readonly) NSArray* tracks;
