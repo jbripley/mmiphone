@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+#import "AppDelegate.h"
+
 #import "MMVoteDataSource.h"
 
 #import "MMVoteModel.h"
@@ -76,6 +78,15 @@
   [sections addObject:NSLocalizedString(@"Chosen Track", @"")];
   [items addObject:voteTrackItems];
   TT_RELEASE_SAFELY(voteTrackItems);
+  
+  if ([(AppDelegate*)[UIApplication sharedApplication].delegate canOpenSpotifyUri]) {
+    TTTableButton* previewItem = [TTTableButton
+                                  itemWithText:NSLocalizedString(@"Preview in Spotify", @"")
+                                  URL:_voteModel.trackUri];
+    
+    [sections addObject:@""];
+    [items addObject:[NSArray arrayWithObject:previewItem]];
+  }
     
   self.items = items;
   self.sections = sections;

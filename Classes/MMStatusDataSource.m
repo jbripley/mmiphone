@@ -93,8 +93,6 @@
       if (canOpenSpotifyUri) {
         playlistTrackItem.URL = [NSString stringWithFormat:
                                  kAppSpotifyConfirmFormatURLPath, track.uri];
-        playlistTrackItem.accessoryURL = [NSString stringWithFormat:
-                                          kAppSpotifyConfirmFormatURLPath, track.uri];
       }
       
       [playlistTrackItems addObject:playlistTrackItem];
