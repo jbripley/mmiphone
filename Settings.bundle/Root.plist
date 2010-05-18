@@ -49,6 +49,7 @@
 			<array>
 				<string>Finland</string>
 				<string>France</string>
+				<string>Netherlands</string>
 				<string>Norway</string>
 				<string>Spain</string>
 				<string>Sweden</string>
@@ -58,6 +59,7 @@
 			<array>
 				<string>FI</string>
 				<string>FR</string>
+				<string>NL</string>
 				<string>NO</string>
 				<string>ES</string>
 				<string>SE</string>
