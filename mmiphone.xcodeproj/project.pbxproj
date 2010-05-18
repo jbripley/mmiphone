@@ -12,6 +12,7 @@
 		150F1A1111A02E7000F0605A /* MMTableTrackDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1011A02E7000F0605A /* MMTableTrackDetailItem.m */; };
 		150F1A1411A02E8400F0605A /* MMTableTrackDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */; };
 		150F1BB211A0B62A00F0605A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 150F1BB111A0B62A00F0605A /* Default.png */; };
+		150F1D7911A32CB500F0605A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 150F1D7811A32CB500F0605A /* Entitlements.plist */; };
 		1563EC40119581F900EBDE16 /* MMStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC3F119581F900EBDE16 /* MMStatusViewController.m */; };
 		1563EC43119582E000EBDE16 /* MMStatusDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC42119582E000EBDE16 /* MMStatusDataSource.m */; };
 		1563EC541195849000EBDE16 /* MMStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1563EC531195849000EBDE16 /* MMStatus.m */; };
@@ -135,6 +136,7 @@
 		150F1A1211A02E8400F0605A /* MMTableTrackDetailItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackDetailItemCell.h; sourceTree = "<group>"; };
 		150F1A1311A02E8400F0605A /* MMTableTrackDetailItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackDetailItemCell.m; sourceTree = "<group>"; };
 		150F1BB111A0B62A00F0605A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		150F1D7811A32CB500F0605A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		1563EC3E119581F900EBDE16 /* MMStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusViewController.h; sourceTree = "<group>"; };
 		1563EC3F119581F900EBDE16 /* MMStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStatusViewController.m; sourceTree = "<group>"; };
 		1563EC41119582E000EBDE16 /* MMStatusDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStatusDataSource.h; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				150F1D7811A32CB500F0605A /* Entitlements.plist */,
 				1563ED48119597F300EBDE16 /* Atlas */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -630,6 +633,7 @@
 				1563FA95119A0CDB00EBDE16 /* icon_track.png in Resources */,
 				159381AA119EB66100A1CBA8 /* Localizable.strings in Resources */,
 				150F1BB211A0B62A00F0605A /* Default.png in Resources */,
+				150F1D7911A32CB500F0605A /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +713,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		150F1D3C11A31DD300F0605A /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Distribution;
+		};
+		150F1D3D11A31DD300F0605A /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = mmiphone_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					../three20/Build/Products/three20,
+					../three20/src/extThree20JSON/Vendors/YAJL,
+					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
+				);
+				INFOPLIST_FILE = "English.lproj/mmiphone-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = mmiphone;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -794,6 +838,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				150F1D3D11A31DD300F0605A /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -803,6 +848,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				150F1D3C11A31DD300F0605A /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
