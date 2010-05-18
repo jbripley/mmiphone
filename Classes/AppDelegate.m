@@ -80,7 +80,7 @@
 
 - (UIViewController*)confirmSpotifyOpen:(NSString*)trackUri {
   TTAlertViewController* alert = [[[TTAlertViewController alloc]
-                                   initWithTitle:NSLocalizedString(@"Play in Spotify", @"")
+                                   initWithTitle:NSLocalizedString(@"Preview in Spotify", @"")
                                    message:
                                     NSLocalizedString(@"Want to play this track in Spotify?", @"")]
                                   autorelease];
