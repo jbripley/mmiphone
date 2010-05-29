@@ -40,6 +40,8 @@
 		15937D51119CACBA00A1CBA8 /* MMSendVoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15937D50119CACBA00A1CBA8 /* MMSendVoteModel.m */; };
 		15937DE7119DB62200A1CBA8 /* MMSendVoteDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15937DE6119DB62200A1CBA8 /* MMSendVoteDelegate.m */; };
 		159381AA119EB66100A1CBA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 159381A8119EB66100A1CBA8 /* Localizable.strings */; };
+		15A58EB811B11CB000002A64 /* mmiphone-Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15A58EB611B11CB000002A64 /* mmiphone-Info.strings */; };
+		15A58F2F11B11E0600002A64 /* mmiphone-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* mmiphone-Info.plist */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -126,7 +128,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		150F1646119EE7F600F0605A /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = sv; path = "sv.lproj/mmiphone-Info.plist"; sourceTree = "<group>"; };
 		150F192111A0221B00F0605A /* MMTableTrackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackItem.h; sourceTree = "<group>"; };
 		150F192211A0221B00F0605A /* MMTableTrackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableTrackItem.m; sourceTree = "<group>"; };
 		150F192411A022F300F0605A /* MMTableTrackItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableTrackItemCell.h; sourceTree = "<group>"; };
@@ -182,6 +183,8 @@
 		15937DE6119DB62200A1CBA8 /* MMSendVoteDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSendVoteDelegate.m; sourceTree = "<group>"; };
 		159381A9119EB66100A1CBA8 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		159381AE119EB6C900A1CBA8 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		15A58EB711B11CB000002A64 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = "English.lproj/mmiphone-Info.strings"; sourceTree = "<group>"; };
+		15A58EB911B11CC000002A64 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = "sv.lproj/mmiphone-Info.strings"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* mmiphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mmiphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -191,7 +194,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* mmiphone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmiphone_Prefix.pch; sourceTree = "<group>"; };
 		6EF963BD118E96C9003902E7 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
-		8D1107310486CEB800E47090 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = "English.lproj/mmiphone-Info.plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* mmiphone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "mmiphone-Info.plist"; sourceTree = "<group>"; };
 		EB383C0410BBF8A40000B2D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		EB383C0510BBF8A40000B2D2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -438,7 +441,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				150F1D7811A32CB500F0605A /* Entitlements.plist */,
 				1563ED48119597F300EBDE16 /* Atlas */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -462,13 +464,15 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				15A58EB611B11CB000002A64 /* mmiphone-Info.strings */,
+				150F1D7811A32CB500F0605A /* Entitlements.plist */,
 				159381A8119EB66100A1CBA8 /* Localizable.strings */,
 				1563FA8B119A0CDB00EBDE16 /* Images */,
 				1563F17F1196E3C000EBDE16 /* Settings.bundle */,
 				1563F1151196D79800EBDE16 /* Icon.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* mmiphone.xcdatamodel */,
-				150F1644119EE7EA00F0605A /* mmiphone-Info.plist */,
+				8D1107310486CEB800E47090 /* mmiphone-Info.plist */,
 				150F1BB111A0B62A00F0605A /* Default.png */,
 			);
 			name = Resources;
@@ -634,6 +638,8 @@
 				159381AA119EB66100A1CBA8 /* Localizable.strings in Resources */,
 				150F1BB211A0B62A00F0605A /* Default.png in Resources */,
 				150F1D7911A32CB500F0605A /* Entitlements.plist in Resources */,
+				15A58EB811B11CB000002A64 /* mmiphone-Info.strings in Resources */,
+				15A58F2F11B11E0600002A64 /* mmiphone-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,15 +698,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		150F1644119EE7EA00F0605A /* mmiphone-Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D1107310486CEB800E47090 /* English */,
-				150F1646119EE7F600F0605A /* sv */,
-			);
-			name = "mmiphone-Info.plist";
-			sourceTree = "<group>";
-		};
 		159381A8119EB66100A1CBA8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -708,6 +705,15 @@
 				159381AE119EB6C900A1CBA8 /* sv */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		15A58EB611B11CB000002A64 /* mmiphone-Info.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15A58EB711B11CB000002A64 /* English */,
+				15A58EB911B11CC000002A64 /* sv */,
+			);
+			name = "mmiphone-Info.strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -742,7 +748,7 @@
 					../three20/src/extThree20JSON/Vendors/YAJL,
 					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
 				);
-				INFOPLIST_FILE = "English.lproj/mmiphone-Info.plist";
+				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -772,7 +778,7 @@
 					../three20/src/extThree20JSON/Vendors/YAJL,
 					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
 				);
-				INFOPLIST_FILE = "English.lproj/mmiphone-Info.plist";
+				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -794,7 +800,7 @@
 					../three20/src/extThree20JSON/Vendors/YAJL,
 					"../three20/src/extThree20JSON/Vendors/YAJL/yajl-1.0.9/src/api",
 				);
-				INFOPLIST_FILE = "English.lproj/mmiphone-Info.plist";
+				INFOPLIST_FILE = "mmiphone-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
