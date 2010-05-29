@@ -22,6 +22,8 @@
 
 #import <extThree20XML/extThree20XML.h>
 
+#import "Three20Core/NSArrayAdditions.h"
+
 static NSString* kSpotifyTrackSearchScheme = @"http";
 static NSString* kSpotifyTrackSearchHost = @"ws.spotify.com";
 static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
@@ -59,12 +61,12 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   
   if (!TTIsStringWithAnyText(text)) {
     TT_RELEASE_SAFELY(_tracks);
-    [_delegates perform:@selector(modelDidChange:) withObject:self];
+    [_delegates makeObjectsPerformSelector:@selector(modelDidChange:) withObject:self];
     return;
   }
   
   _loading = YES;
-  [_delegates perform:@selector(modelDidStartLoad:) withObject:self];
+  [_delegates makeObjectsPerformSelector:@selector(modelDidStartLoad:) withObject:self];
   
   NSURL* url = [[NSURL alloc] initWithScheme:kSpotifyTrackSearchScheme
                 host:kSpotifyTrackSearchHost
@@ -123,7 +125,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   
   _loading = NO;
   TT_RELEASE_SAFELY(_request);
-  [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+  [_delegates makeObjectsPerformSelector:@selector(modelDidFinishLoad:) withObject:self];
   [super requestDidFinishLoad:request];
 }
 
@@ -131,7 +133,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   _loading = NO;
   TT_RELEASE_SAFELY(_request);
   
-  [_delegates perform:@selector(model:didFailLoadWithError:) withObject:self withObject:error];
+  [_delegates makeObjectsPerformSelector:@selector(model:didFailLoadWithError:) withObject:self withObject:error];
   [super request:request didFailLoadWithError:error];
 }
 
@@ -139,7 +141,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
   _loading = NO;
   TT_RELEASE_SAFELY(_request);
   
-  [_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
+  [_delegates makeObjectsPerformSelector:@selector(modelDidCancelLoad:) withObject:self];
   [super requestDidCancelLoad:request];
 }
 
@@ -170,7 +172,7 @@ static NSString* kSpotifyTrackSearchPathFormat = @"/search/1/track.xml?q=%@";
 
 - (void)cancel {
   [_request cancel];
-  [_delegates perform:@selector(modelDidCancelLoad:) withObject:self];
+  [_delegates makeObjectsPerformSelector:@selector(modelDidCancelLoad:) withObject:self];
 }
 
 @end
